@@ -141,5 +141,40 @@
         "…mudar de área / …abrir seu negócio"
       ]
     ]
+  },
+  {
+    "n": 5,
+    "id": "deixa-eu-me-apresentar",
+    "nome": "Se você chegou agora, deixa eu me apresentar",
+    "orig": "Carrossel de apresentação",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/Dd9HTR6EZ9s/",
+    "perfil": "Jéssica Tate · Marketing Digital",
+    "img": "assets/refs/05-a.jpg",
+    "audio": "",
+    "numeros": "357 curtidas · 20 comentários",
+    "resumo": "Carrossel de 8 fotos pra quem acabou de chegar no perfil. A capa é um retrato bem produzido, com 'Se você chegou agora, deixa eu me apresentar.' e o nome e a profissão em letra pequena. Os slides seguintes contam quem ela é e o que faz.",
+    "passos": [
+      "Capa: seu melhor retrato + 'Se você chegou agora, deixa eu me apresentar.' + nome e profissão pequenos",
+      "Slides 2 a 7: quem você é, sua história, o que você faz e pra quem, bastidores e uma curiosidade",
+      "Último slide: o que a pessoa encontra no perfil e o convite pra seguir ou chamar no direct"
+    ],
+    "nichos": [
+      [
+        "Nutricionista",
+        "quem sou, minha forma de atender e o que ensino aqui"
+      ],
+      [
+        "Lojista",
+        "quem está por trás da loja e como tudo começou"
+      ],
+      [
+        "Fotógrafa",
+        "minha história, meus ensaios favoritos e como agendar"
+      ]
+    ]
   }
 ]
