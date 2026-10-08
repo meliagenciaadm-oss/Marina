@@ -105,5 +105,41 @@
         "um dia gravando, editando e respondendo cliente"
       ]
     ]
+  },
+  {
+    "n": 4,
+    "id": "nunca-e-tarde",
+    "nome": "Nunca é tarde demais para…",
+    "orig": "Carrossel de frase continuada",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DdjHsxZFyPq/",
+    "perfil": "",
+    "img": "assets/refs/04-a.jpg",
+    "img2": "assets/refs/04-b.jpg",
+    "audio": "",
+    "numeros": "77 reposts · 10 comentários",
+    "resumo": "Carrossel de 7 fotos. A capa é uma selfie no espelho com 'nunca é tarde demais para…' em letras grandes e estrelinhas amarelas. Cada slide seguinte completa a frase com uma foto do dia a dia, como 'fazer algo que vc ama'.",
+    "passos": [
+      "Capa: foto sua com 'nunca é tarde demais para…' em letra grande",
+      "5 a 6 slides, cada um completando a frase sobre uma foto que combine",
+      "Mesmo estilo de texto em todos (branco, com estrelinhas)"
+    ],
+    "nichos": [
+      [
+        "Fitness",
+        "…começar a treinar / …correr sua primeira prova"
+      ],
+      [
+        "Idiomas",
+        "…aprender inglês / …viajar sozinha"
+      ],
+      [
+        "Carreira",
+        "…mudar de área / …abrir seu negócio"
+      ]
+    ]
   }
 ]
