@@ -8,12 +8,15 @@ Cada semana tem seu próprio arquivo em `semanas/` e é publicada com um link di
 |---|---|---|---|
 | 41 | 5 a 11 out 2026 | `semanas/2026-s41.html` | https://claude.ai/artifact/V3PurV7a7WnFwpM1M3PH1T |
 
-## Como colocar os posts de referência reais
+## Como montar uma semana
 
-A página aceita três campos opcionais em cada formato (na lista `F` dentro do HTML):
+1. Coloque os posts em `semanas/dados/<semana>-posts.json` e os prints em `semanas/assets/refs/`.
+2. Rode, por exemplo:
 
-- `post`: link do post no Instagram (ex.: `https://www.instagram.com/reel/XXXX/`)
-- `img`: print do post salvo em `semanas/assets/ref-<id>.jpg`
-- `perfil`: @ de quem postou
+```
+python3 semanas/montar.py s41 41 "5 a 11 de outubro" 08/10/2026 --destaque 13,16,7 --visual 2,4,15
+```
 
-Sem esses campos, a página mostra a capa ilustrativa e o botão abre a busca do Instagram.
+3. Publique o `semanas/2026-<semana>.html` gerado junto com a pasta `assets/`.
+
+O visual fica em `semanas/_modelo.html`.

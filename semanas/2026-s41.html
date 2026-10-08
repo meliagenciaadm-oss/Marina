@@ -3,29 +3,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: capa com foto em arco + boas-vindas, depois uma tabela verde de formatos (vira cartões no celular) */
+/* Layout: capa com foto em arco + boas-vindas, depois uma tabela verde de posts de referência (vira cartões no celular) */
 :root{
   --bg:#f2f6f1; --surface:#ffffff; --ink:#15281e; --muted:#5a6e61; --line:#d8e4da;
   --forest:#1f4d36; --leaf:#2f7a4f; --sage:#8fb59a; --mint:#e2efe5; --linen:#ece2d4;
-  --band:#1f4d36; --band-ink:#f2f6f1; --row-alt:#f7faf6; --warn:#9a5a12;
+  --band:#1f4d36; --band-ink:#f2f6f1; --row-alt:#f7faf6; --gold:#8a6a12; --gold-soft:#f6edd2;
   --f-display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
   --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0e1913; --surface:#14231a; --ink:#e6f0e8; --muted:#9bb2a3; --line:#25382c;
   --forest:#a8d8b8; --leaf:#7cc79a; --sage:#4f7a5e; --mint:#1b3325; --linen:#2a2a22;
-  --band:#1c3a29; --band-ink:#e6f0e8; --row-alt:#112019; --warn:#e8b06a; color-scheme:dark}}
+  --band:#1c3a29; --band-ink:#e6f0e8; --row-alt:#112019; --gold:#e6c46a; --gold-soft:#332a12; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0e1913; --surface:#14231a; --ink:#e6f0e8; --muted:#9bb2a3; --line:#25382c;
   --forest:#a8d8b8; --leaf:#7cc79a; --sage:#4f7a5e; --mint:#1b3325; --linen:#2a2a22;
-  --band:#1c3a29; --band-ink:#e6f0e8; --row-alt:#112019; --warn:#e8b06a; color-scheme:dark}
+  --band:#1c3a29; --band-ink:#e6f0e8; --row-alt:#112019; --gold:#e6c46a; --gold-soft:#332a12; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:0 56px}
 .wrap{max-width:1180px;margin:0 auto}
 a{color:var(--leaf)}
 :focus-visible{outline:2px solid var(--leaf);outline-offset:2px}
 
-/* Capa */
 .hero{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:40px 36px}
 .photo{position:relative;max-width:100%}
 .photo img{display:block;width:100%;aspect-ratio:760/1088;object-fit:cover;border-radius:999px 999px 24px 24px;background:var(--mint)}
@@ -41,45 +40,30 @@ h1 em{font-style:normal;color:var(--leaf)}
   .small{margin-inline:auto}
 }
 
-/* Filtros */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .chip{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 13px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--band);border-color:var(--band);color:var(--band-ink)}
 .search{flex:1 1 200px;min-width:0;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px}
 .count{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 
-/* Tabela */
 .table-box{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
 table{width:100%;border-collapse:collapse}
 thead th{background:var(--band);color:var(--band-ink);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:14px 18px}
 tbody tr{border-top:1px solid var(--line)}
 tbody tr:nth-child(even){background:var(--row-alt)}
 td{padding:18px;vertical-align:top}
-.c-fmt{width:26%}.c-ref{width:150px}.c-ig{width:210px}
+.c-fmt{width:26%}.c-ref{width:168px}.c-ig{width:200px}
 .n{font-size:12px;font-weight:700;color:var(--sage);font-variant-numeric:tabular-nums}
-.name{font-family:var(--f-display);font-weight:600;font-size:18px;line-height:1.15;margin:2px 0 2px;color:var(--forest);text-wrap:balance}
-.orig{font-size:12.5px;color:var(--muted)}
+.name{font-family:var(--f-display);font-weight:600;font-size:18px;line-height:1.15;margin:2px 0 4px;color:var(--forest);text-wrap:balance}
 .pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
 .pill{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--mint);color:var(--forest)}
-.pill.alta{background:var(--leaf);color:var(--surface)}
-.pill.sazonal{background:var(--linen);color:var(--ink)}
-.audio{font-size:12.5px;color:var(--muted);margin-top:10px}
-.audio b{color:var(--ink);font-weight:600}
-.audio .nao{color:var(--warn)}
+.pill.top{background:var(--leaf);color:var(--surface)}
+.pill.visual{background:var(--gold-soft);color:var(--gold)}
+.meta{font-size:12.5px;color:var(--muted);margin-top:10px;display:grid;gap:2px}
+.meta b{color:var(--ink);font-weight:600}
 
-.thumb{width:112px;max-width:100%;aspect-ratio:9/16;border-radius:14px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px;color:#fff;text-align:center;box-shadow:0 6px 18px -10px rgba(20,50,30,.6)}
-.thumb .t1{font-size:9.5px;font-weight:600;opacity:.9;line-height:1.2}
-.thumb .t2{font-family:var(--f-display);font-weight:800;font-size:15px;line-height:1.05;text-wrap:balance}
-.thumb .flip{display:inline-block;transform:rotate(180deg)}
-.thumb .bar-ig{position:absolute;left:10px;right:10px;bottom:10px;height:3px;border-radius:2px;background:rgba(255,255,255,.35)}
-.thumb .bar-ig::before{content:"";position:absolute;inset:0 45% 0 0;background:#fff;border-radius:2px}
-.thumb .kind{position:absolute;top:8px;left:8px;font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-.thumb.carrossel .bar-ig{display:none}
-.thumb .dots{position:absolute;bottom:9px;left:0;right:0;display:flex;justify-content:center;gap:3px}
-.thumb .dots i{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
-.thumb .dots i:first-child{background:#fff}
-.thumb.real{display:block;padding:0;object-fit:cover;background:var(--mint)}
-.more{display:block;font-size:12.5px;margin-top:8px}
+.shot{display:block;width:132px;max-width:100%;border-radius:14px;overflow:hidden;box-shadow:0 8px 20px -12px rgba(20,50,30,.7);background:var(--mint)}
+.shot img{display:block;width:100%;aspect-ratio:360/545;object-fit:cover;object-position:center}
 .cap{font-size:11px;color:var(--muted);margin-top:6px}
 
 .resumo{margin:0 0 10px}
@@ -90,11 +74,10 @@ details{margin-top:10px;font-size:14px}
 summary{cursor:pointer;font-weight:600;color:var(--leaf)}
 details ol{margin:6px 0 0;padding-left:20px}
 
-.ig{display:inline-flex;white-space:nowrap;align-items:center;gap:6px;font-weight:700;font-size:13.5px;text-decoration:none;background:var(--band);color:var(--band-ink);border-radius:999px;padding:9px 14px}
+.ig{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-weight:700;font-size:13.5px;text-decoration:none;background:var(--band);color:var(--band-ink);border-radius:999px;padding:9px 16px}
 .ig svg{width:15px;height:15px}
-.src{display:grid;gap:3px;margin-top:12px;font-size:12px}
-.src span{color:var(--muted)}
-.src a{overflow-wrap:anywhere}
+.soon{display:inline-block;font-size:13px;color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:8px 14px}
+.who{font-size:12.5px;color:var(--muted);margin-top:10px;overflow-wrap:anywhere}
 .empty{padding:36px;text-align:center;color:var(--muted)}
 
 @media (max-width:760px){
@@ -102,15 +85,14 @@ details ol{margin:6px 0 0;padding-left:20px}
   thead{display:none}
   table,tbody{display:block}
   tbody{display:grid;gap:14px}
-  tbody tr,tbody tr:nth-child(even){display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+  tbody tr,tbody tr:nth-child(even){display:grid;grid-template-columns:104px minmax(0,1fr);gap:4px 14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
   td{display:block;padding:0;width:auto!important;min-width:0}
   td.c-ref{grid-column:1;grid-row:1}
   td.c-fmt{grid-column:2;grid-row:1}
   td.c-ad,td.c-ig{grid-column:1/-1;padding-top:12px}
-  .thumb{width:96px}
+  .shot{width:104px}
   .cap{display:none}
 }
-
 footer{margin-top:32px;color:var(--muted);font-size:13.5px;display:grid;gap:8px;max-width:72ch}
 footer b{color:var(--ink)}
 </style>
@@ -139,255 +121,47 @@ footer b{color:var(--ink)}
 </div>
 
 <footer>
-  <p><b>Sobre as referências:</b> as capas são ilustrações do formato. O botão "Ver no Instagram" abre a busca do app com os posts da trend, e a fonte é o relatório semanal que registrou a tendência.</p>
+  <p><b>Destaque</b> marca os posts com mais engajamento da semana. <b>Visual da semana</b> marca a capa que mais se repetiu: selfie, frase em letra grande e estrelinhas.</p>
   <p><b>Áudio:</b> se a música não aparecer pra você, sua conta é comercial. Use áudio original ou um som com o mesmo clima.</p>
 </footer>
 </div>
 
 <script>
-const S = {
-  later:{n:"Later · Reels Trends",u:"https://later.com/blog/instagram-reels-trends/"},
-  ne:{n:"New Engen · Instagram Trends out/26",u:"https://newengen.com/insights/instagram-trends/"},
-  rd:{n:"Ramdam · Instagram Trends out/26",u:"https://www.ramd.am/blog/trends-instagram"},
-  sp:{n:"SocialPilot · Reels Trends",u:"https://www.socialpilot.co/blog/instagram-reels-trends"},
-  nu:{n:"Nuelink · Trending on Instagram out/26",u:"https://blog.nuelink.com/trending-on-instagram-october-2026/"},
-  tm:{n:"TIME Marketing · Trends out/26",u:"https://www.timeisnowmarketing.com/blog/trends-october-2026"},
-  sb:{n:"SocialBee · Latest Instagram Trends",u:"https://socialbee.com/blog/latest-instagram-trends/"},
-  su:{n:"Startups.co.uk · Trends out/26",u:"https://startups.co.uk/news/social-media-trends-october-2026/"},
-  msb:{n:"My Social Boutique · Carrosséis",u:"https://mysocialboutique.co/5-instagram-carousel-design-trends-fall-2026/"},
-  msb2:{n:"My Social Boutique · Trends do mês",u:"https://mysocialboutique.co/instagram-trends-2026/"},
-  pe:{n:"Pepper · Trends out/26",u:"https://www.pepperagency.com/blog/tiktok-instagram-trends-for-october-2026-and-how-brands-can-actually-use-them"},
-  nc:{n:"NapoleonCat · Memes out/26",u:"https://napoleoncat.com/blog/trending-memes/"},
-  lr:{n:"Lightreel · Relatório semanal",u:"https://lightreel.ai/blogs/whats-trending-on-instagram"},
-  ss:{n:"Scott Social · Áudios da semana",u:"https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram"},
-  cdb:{n:"CreatorDB · Áudios 07/10",u:"https://creatordb.app/free-tools/trending-instagram-audio/"}
-};
-// empresa: true = liberado p/ conta comercial, false = só conta criadora, null = áudio original/qualquer som
-const F = [
-{id:"upside-down",nome:"De cabeça pra baixo",orig:"Upside Down",tipo:["Reels"],nivel:"Fácil",calor:"alta",
- resumo:"Transição de mãos que vira o antes no depois. A transformação é a protagonista.",
- passos:["Grave o 'antes' fazendo o gesto de mãos da trend e dublando o trecho","Corte no gesto e grave o 'depois' na mesma posição","Deixe a transição fazer o trabalho, sem texto longo"],
- nichos:[["Estética","pele antes e depois do protocolo"],["Decoração","cantinho bagunçado vs. organizado"],["Finanças","planilha caótica vs. orçamento resolvido"]],
- audio:["Upside Down · Diana Ross",false],fontes:["later","sp"],busca:"upside down diana ross trend"},
-{id:"grwm-loading",nome:"Me arrumando: carregando 0% → 100%",orig:"Daily GRWM loading",tipo:["Reels"],nivel:"Médio",calor:"alta",
- resumo:"A rotina vira uma barra de progresso. Cada corte sobe a porcentagem até o resultado final em 100%.",
- passos:["Comece em 0% no estado mais cru possível","A cada etapa, um corte e um número na tela (10%, 35%, 70%…)","Revele o resultado completo em 100%"],
- nichos:[["Confeitaria","bolo de 0% (ingredientes) a 100% (decorado)"],["Professora","montando a aula do zero até a turma entrando"],["Arquitetura","terreno vazio até a obra entregue"]],
- audio:["Windows in Brazil (Sped Up)",null],fontes:["later"],busca:"grwm loading"},
-{id:"getting-robbed",nome:"Fui assaltada e nem vi",orig:"Getting robbed",tipo:["Reels"],nivel:"Médio",calor:"alta",
- resumo:"Uma tomada só: você grudada no celular enquanto alguém leva sua bolsa ao fundo. O texto diz o que te distraiu tanto.",
- passos:["Posicione a câmera fixa e fique entretida no celular","Alguém passa e leva sua bolsa, você nem percebe","Texto: 'eu sendo assaltada enquanto…' com algo do seu nicho"],
- nichos:[["Viagens","…achava passagem barata pra Lisboa"],["Livros","…lia o último capítulo"],["Loja online","…via o carrinho da cliente fechar"]],
- audio:["Som do trend no app",null],fontes:["later","rd"],busca:"getting robbed trend"},
-{id:"reaction-if",nome:"Minha reação se…",orig:"My reaction if",tipo:["Reels"],nivel:"Fácil",calor:"subindo",
- resumo:"Situações cada vez mais absurdas e você reagindo só com a cara. Ótimo pra mostrar o jeito difícil vs. o seu jeito.",
- passos:["Liste 4 a 6 situações em ordem crescente de absurdo","Uma tela por situação, com o texto em cima","Só expressão facial, sem falar"],
- nichos:[["Nutrição","amiga contando caloria do alface…"],["Social media","cliente pedindo 'só um postzinho' às 23h…"],["Fitness","alguém fazendo agachamento com o joelho pra dentro…"]],
- audio:["Som do trend no app",null],fontes:["rd"],busca:"my reaction if trend"},
-{id:"reaction-numbers",nome:"Minha reação a ___ (números subindo)",orig:"My Reaction To ___",tipo:["Reels"],nivel:"Fácil",calor:"subindo",
- resumo:"Um número vai aumentando e sua reação fica cada vez maior. Funciona com preço, resultado e seguidores.",
- passos:["Escolha uma métrica do seu nicho","Grave 4 reações, da mais contida à mais exagerada","Na tela, o número sobe a cada corte"],
- nichos:[["Imobiliária","m² do apartamento: 30, 50, 80, 120"],["Infoproduto","alunas que passaram: 10, 100, 1.000"],["Salão","horas de alongamento: 1, 2, 4, 6"]],
- audio:["Som do trend no app",null],fontes:["ne"],busca:"my reaction to trend"},
-{id:"message-from-a",nome:"Mensagem de A",orig:"Message From A",tipo:["Reels"],nivel:"Fácil",calor:"alta",
- resumo:"A anônima de Pretty Little Liars 'pegou' um hábito vergonhoso seu. Uma linha de texto, 7 a 15 segundos, em loop.",
- passos:["Escolha um hábito específico e um pouco constrangedor","Grave você fazendo isso","Texto: 'Mensagem de A… [o hábito] -A'"],
- nichos:[["Dentista","'eu vi você usando o fio dental 1x por mês' -A"],["Moda","'eu sei que você comprou a mesma calça preta pela 4ª vez' -A"],["Produtividade","'27 abas abertas de novo?' -A"]],
- audio:["Message From A · Pretty Little Liars",false],fontes:["ne","su"],busca:"message from A trend"},
-{id:"ramalama",nome:"Caminhada da revelação",orig:"Ramalama Costume Walk",tipo:["Reels"],nivel:"Médio",calor:"sazonal",
- resumo:"Câmera baixa nas pernas andando até a câmera, depois abre para revelar tudo. É de Halloween, mas serve pra qualquer revelação.",
- passos:["Câmera na altura das pernas, passos firmes e no ritmo","No sussurro 'taking a picture', abre o plano","Sem texto e sem fala"],
- nichos:[["Moda","revelação do look da semana"],["Pets","pet fantasiado entrando em cena"],["Equipe","time inteiro chegando de uniforme"]],
- audio:["Ramalama (Bang Bang) · Róisín Murphy",false],fontes:["ne","pe"],busca:"ramalama costume walk"},
-{id:"patient-zero",nome:"Edit de vitória",orig:"Patient Zero · Wedding Day Edit",tipo:["Reels"],nivel:"Fácil",calor:"alta",
- resumo:"O som nº 1 da semana. Noivas editam o casamento como volta da vitória. Adapte para o grande dia da sua cliente.",
- passos:["Separe 5 a 8 clipes curtos do momento mais marcante","Corte no ritmo da música","Feche no clipe mais emocionante"],
- nichos:[["Maquiadora","noiva da semana do primeiro olhar ao final"],["Personal","aluna batendo a meta"],["Fotógrafa","bastidores do ensaio até a foto final"]],
- audio:["Patient Zero · Taylor Swift",false],fontes:["ne","sp","cdb"],busca:"patient zero taylor swift"},
-{id:"the-process",nome:"O processo",orig:"The Process",tipo:["Reels"],nivel:"Fácil",calor:"alta",
- resumo:"Ferramentas, etapas e bastidores antes do resultado. A transformação visível é o conteúdo.",
- passos:["Abra com as ferramentas ou a matéria-prima","Mostre 3 a 5 etapas rápidas","Termine no resultado com uma pausa"],
- nichos:[["Unhas","do esmalte ao nail art pronto"],["Design","rascunho, grid e arte final"],["Cozinha","mise en place até o prato"]],
- audio:["The Process (áudio original, liberado)",true],fontes:["tm","sp","nu"],busca:"the process trend"},
-{id:"vlog-timestamps",nome:"Vlog com horários",orig:"Vlog Timestamps",tipo:["Reels"],nivel:"Fácil",calor:"subindo",
- resumo:"O dia em clipes curtos, cada um com o horário na tela. Transições da esquerda para a direita.",
- passos:["Grave 6 a 10 clipes de 2 segundos ao longo do dia","Coloque o horário em cada um (7:00, 9:30, 12:00…)","Use movimento de câmera lateral entre as cenas"],
- nichos:[["Empreendedora","um dia de entregas da loja"],["Médica","plantão do começo ao fim"],["Mãe","rotina com bebê"]],
- audio:["Qualquer som tranquilo",null],fontes:["tm"],busca:"vlog timestamps"},
-{id:"quero-mais",nome:"Nessa estação eu quero mais…",orig:"This Fall I Want More",tipo:["Carrossel"],nivel:"Fácil",calor:"sazonal",
- resumo:"Carrossel de fotos bonitas que começa com 'nessa estação eu quero mais…'. Cada foto é um desejo.",
- passos:["Capa: 'Nessa primavera eu quero mais…'","Uma foto por slide com uma palavra ou frase curta","Último slide: pergunta para a seguidora completar"],
- nichos:[["Bem-estar","…manhãs sem celular"],["Gastronomia","…mesa cheia de amigos"],["Carreira","…projetos que me dão orgulho"]],
- audio:["Opcional (carrossel com música)",null],fontes:["tm"],busca:"this fall I want more"},
-{id:"aholic",nome:"Viciada em ___",orig:"Autumnaholic",tipo:["Reels"],nivel:"Fácil",calor:"sazonal",
- resumo:"Montagem de clipes da sua obsessão com a palavra '[tema]aholic' na tela. Lá fora é outono, aqui vira o que você quiser.",
- passos:["Junte 8 a 12 clipes do tema no rolo da câmera","Texto fixo: 'primaveraholic', 'cafeaholic', 'planneraholic'…","Cortes rápidos no ritmo"],
- nichos:[["Floricultura","primaveraholic"],["Papelaria","planneraholic"],["Cafeteria","cafeaholic"]],
- audio:["La La La (Gilmore Girls) ou Autumn Colors",true],fontes:["sb","sp"],busca:"autumnaholic"},
-{id:"ghosting-working",nome:"Sumida porque tô trabalhando",orig:"Living Life, Posting Nothing",tipo:["Reels"],nivel:"Fácil",calor:"alta",
- resumo:"Bastidores do rolo da câmera com o texto 'tô te ignorando porque tô trabalhando'. Zero gravação nova.",
- passos:["Pegue 6 a 10 clipes de bastidor da semana","Texto: 'sumi porque tô trabalhando'","Legenda contando o que vem aí"],
- nichos:[["Prestadora de serviço","atendimentos da semana"],["Criadora de curso","gravações do módulo novo"],["Artesã","produção da encomenda grande"]],
- audio:["GEEKIN · Nemzzz_",null],fontes:["ss"],busca:"ghosting you cause I'm working"},
-{id:"where-are-you",nome:"Cadê você? Em casa.",orig:"Where are you? / Home",tipo:["Reels","Foto"],nivel:"Fácil",calor:"subindo",
- resumo:"Print falso de conversa: 'cadê você?' 'em casa'. A imagem mostra que 'casa' é o seu lugar ou o seu produto.",
- passos:["Monte o print da conversa","Mostre o lugar ou produto como se fosse a casa da pessoa","Legenda curta e com humor"],
- nichos:[["Academia","'em casa' = no leg press"],["Cafeteria","'em casa' = na mesa do canto"],["Livraria","'em casa' = no corredor de romance"]],
- audio:["Som do trend no app",null],fontes:["sp"],busca:"where are you home trend"},
-{id:"wore-went-did",nome:"O que vesti, onde fui, o que fiz",orig:"What I wore, where I went, what I did",tipo:["Reels"],nivel:"Médio",calor:"subindo",
- resumo:"Tela dividida em faixas horizontais: look, lugar e atividade, todas sincronizadas no mesmo vídeo.",
- passos:["Grave três clipes curtos com o mesmo tempo","Empilhe em 3 faixas no CapCut ou Edits","Rotule cada faixa"],
- nichos:[["Consultora de imagem","look, evento, resultado"],["Turismo","roupa, cidade, passeio"],["Corretora","look, imóvel, visita"]],
- audio:["Som animado à sua escolha",null],fontes:["sp"],busca:"what I wore where I went what I did"},
-{id:"some-people-call-me",nome:"Algumas pessoas me chamam de…",orig:"Some people call me…",tipo:["Reels"],nivel:"Fácil",calor:"alta",
- resumo:"Você lista os apelidos e fecha com 'mas pode me chamar quando…' e o seu serviço.",
- passos:["'Algumas pessoas me chamam de [nome]…'","Mais 2 apelidos engraçados ou do seu trabalho","'…mas pode me chamar quando precisar de [serviço]'"],
- nichos:[["Designer de sobrancelha","'a moça da sobrancelha'"],["Contadora","'a que salva do leão'"],["Personal","'a chata do agachamento'"]],
- audio:["Fala sua (áudio original)",null],fontes:["sb","su"],busca:"some people call me trend"},
-{id:"mum-into-me",nome:"Transformei minha mãe em mim",orig:"Turning my mum into me",tipo:["Reels"],nivel:"Médio",calor:"alta",
- resumo:"Vestir alguém da família com o seu estilo e filmar a revelação. Centenas de milhões de views no TikTok.",
- passos:["Mostre a pessoa como ela é no dia a dia","Corte para a produção com suas roupas e maquiagem","Revelação lado a lado"],
- nichos:[["Moda","mãe com o look da loja"],["Cabelo","avó com o corte da moda"],["Maquiagem","pai com skincare"]],
- audio:["Som nostálgico (ex.: Freaky Friday)",null],fontes:["su","pe"],busca:"turning my mom into me"},
-{id:"one-question",nome:"Uma pergunta, uma palavra",orig:"One question, one word",tipo:["Reels","Carrossel"],nivel:"Fácil",calor:"subindo",
- resumo:"Você faz uma pergunta de personalidade (a amigas ou ao ChatGPT) e a resposta em uma palavra aparece sobre suas imagens.",
- passos:["Escolha a pergunta: 'me defina em uma palavra'","Colete respostas","Uma resposta por cena ou slide"],
- nichos:[["Marca pessoal","clientes definem seu atendimento"],["Restaurante","o prato em uma palavra"],["Coach","alunas definem a mentoria"]],
- audio:["Som do trend no app",null],fontes:["su"],busca:"one question one word trend"},
-{id:"rock-paper-scissors",nome:"Pedra, papel e tesoura",orig:"Rock, paper, scissors",tipo:["Carrossel","Reels"],nivel:"Fácil",calor:"subindo",
- resumo:"Duas mãos se enfrentam. A que perde é o problema, a que ganha é a sua solução.",
- passos:["Slide 1: a disputa com humor","Mão perdedora = o que sua cliente faz errado","Mão vencedora = o que você ensina ou vende"],
- nichos:[["Contadora","'notas na caixa de sapato' vs. 'fluxo de caixa mensal'"],["Skincare","'dormir de maquiagem' vs. 'demaquilante'"],["Organização","'gaveta da bagunça' vs. 'organizadores'"]],
- audio:["Opcional",null],fontes:["su"],busca:"rock paper scissors trend"},
-{id:"thats-so-you",nome:"Isso é tão você",orig:"That's so you",tipo:["Carrossel"],nivel:"Fácil",calor:"alta",
- resumo:"Colagem de detalhes bem específicos de uma pessoa: música favorita, pedido no café, mania. Menos selfie, mais personalidade.",
- passos:["Junte 6 a 10 fotos de manias e preferências","Monte em colagem ou um por slide","Legenda: 'marca alguém que é exatamente isso'"],
- nichos:[["Marca","'isso é tão a cliente da loja'"],["Criadora","'isso é tão eu'"],["Nicho mãe","'isso é tão mãe de primeira viagem'"]],
- audio:["Opcional",null],fontes:["su"],busca:"that's so you trend"},
-{id:"this-is-your-sign",nome:"Esse é o seu sinal",orig:"This is your sign",tipo:["Reels"],nivel:"Fácil",calor:"subindo",
- resumo:"B-roll que você já tem + texto apontando 'o sinal' que a pessoa precisava + chamada para ação.",
- passos:["Escolha um clipe bonito do rolo da câmera","Texto: 'Esse é o seu sinal pra…'","Termine com o convite: link, agenda, comentário"],
- nichos:[["Psicóloga","…começar a terapia"],["Idiomas","…se matricular no inglês"],["Viagens","…tirar o passaporte"]],
- audio:["Som tranquilo",null],fontes:["nu","later"],busca:"this is your sign"},
-{id:"things-i-know-at",nome:"Coisas que eu sei aos [idade]",orig:"Things I know at 27",tipo:["Carrossel","Reels"],nivel:"Fácil",calor:"subindo",
- resumo:"Sua idade vira o gancho. Uma lista de aprendizados do seu nicho.",
- passos:["Capa: 'Coisas que eu sei aos 34'","Um aprendizado por slide ou cena","Feche com a pergunta: 'e você, o que sabe aos…?'"],
- nichos:[["Finanças","…que reserva de emergência vem antes de viagem"],["Maternidade","…que o 'faz parte' é real"],["Carreira","…que networking é amizade"]],
- audio:["Opcional",null],fontes:["later"],busca:"things I know at"},
-{id:"red-card",nome:"Cartão vermelho",orig:"Things that deserve a red card",tipo:["Carrossel"],nivel:"Fácil",calor:"subindo",
- resumo:"Carrossel listando o que merece ser expulso do seu nicho. Tipografia forte e um visual só.",
- passos:["Capa: 'Coisas que merecem cartão vermelho em [nicho]'","Uma 'expulsão' por slide","Último slide: 'o que você adicionaria?'"],
- nichos:[["Marketing","'post sem legenda'"],["Casamentos","'buquê de última hora'"],["Beleza","'base dois tons mais clara'"]],
- audio:["Opcional",null],fontes:["msb"],busca:"red card carousel"},
-{id:"said-out-loud",nome:"Coisas que já falei em voz alta como…",orig:"Things I've said out loud as a…",tipo:["Carrossel"],nivel:"Fácil",calor:"subindo",
- resumo:"Frases reais que você já falou no seu trabalho. Identificação garantida com quem é da área.",
- passos:["Capa: 'Coisas que já falei em voz alta como [profissão]'","Uma frase por slide, letras grandes","Peça para completarem nos comentários"],
- nichos:[["Nutricionista","'não, o pão não é o vilão'"],["Professora","'fulano, volta pro seu lugar'"],["Fotógrafa","'só mais uma, juro'"]],
- audio:["Opcional",null],fontes:["msb"],busca:"things I've said out loud as a"},
-{id:"unfortunately-love",nome:"Infelizmente eu amo…",orig:"Unfortunately I do love…",tipo:["Carrossel","Foto"],nivel:"Fácil",calor:"subindo",
- resumo:"Confissões de coisas que você ama mesmo sabendo que não deveria. Em texto ou carrossel.",
- passos:["Capa: 'Infelizmente eu amo…'","Uma confissão por slide","Mantenha no seu nicho"],
- nichos:[["Personal","…um pão de queijo depois do treino"],["Decoração","…uma almofada a mais"],["Social media","…um carrossel de 20 slides"]],
- audio:["Opcional",null],fontes:["msb2"],busca:"unfortunately I do love"},
-{id:"gold-star",nome:"Estrelinha dourada",orig:"Gold star behaviour",tipo:["Reels","Carrossel"],nivel:"Fácil",calor:"subindo",
- resumo:"Celebrar as pequenas vitórias do dia a dia. Ache a vitória pequena que existe no seu nicho.",
- passos:["Liste conquistas pequenas e reais","Uma por cena com uma ⭐ na tela","Feche com 'qual foi a sua de hoje?'"],
- nichos:[["Finanças","não abri o app de delivery hoje"],["Fitness","bebi 2 litros de água"],["Estudos","revisei 20 minutos"]],
- audio:["Som leve",null],fontes:["pe"],busca:"gold star behaviour"},
-{id:"grr-mondays",nome:"Segunda-feira Grr",orig:"Grr Mondays",tipo:["Foto","Reels"],nivel:"Fácil",calor:"alta",
- resumo:"Meme da semana: poste como sua segunda está de verdade e marque #GrrMondays.",
- passos:["Foto ou clipe sem filtro da sua segunda real","Texto curto: 'segunda-feira: grr'","Poste nos Stories ou no feed toda segunda"],
- nichos:[["Clínica","agenda lotada às 8h"],["Mãe empreendedora","café frio e 40 mensagens"],["Loja","estoque chegando"]],
- audio:["Opcional",null],fontes:["nc"],busca:"grrmondays"},
-{id:"problem-first",nome:"Problema primeiro, solução depois",orig:"Context before product",tipo:["Reels"],nivel:"Médio",calor:"alta",
- resumo:"O padrão mais forte do relatório da semana: abrir com um problema comum ou algo em jogo, e só depois mostrar o produto ou processo.",
- passos:["Gancho nos 3 primeiros segundos com o problema","Mostre por que isso importa pra você","Revele a solução e o resultado"],
- nichos:[["Skincare","'minha pele descamava todo inverno'"],["Software","'eu perdia 3 horas com planilha'"],["Doceria","'o bolo sempre afundava no meio'"]],
- audio:["Fala sua (áudio original)",null],fontes:["lr"],busca:"storytelling reels"},
-{id:"recurring-character",nome:"Personagem recorrente",orig:"Repeatable comedy characters",tipo:["Reels"],nivel:"Médio",calor:"subindo",
- resumo:"Uma personagem de esquete que volta toda semana. As séries de humor estão crescendo mais que os memes.",
- passos:["Crie uma personagem do seu nicho (a cliente indecisa, a sogra…)","Um figurino ou adereço fixo","Novo episódio toda semana, mesmo começo"],
- nichos:[["Imobiliária","'a cliente que quer 3 quartos por 1.500'"],["Dentista","'o paciente que jura que usa fio dental'"],["Moda","'a amiga que diz que não tem roupa'"]],
- audio:["Fala sua (áudio original)",null],fontes:["lr"],busca:"recurring character comedy reels"},
-{id:"keep-me-in-thoughts",nome:"Me guarda no seu pensamento",orig:"Please keep me in your thoughts",tipo:["Reels"],nivel:"Fácil",calor:"subindo",
- resumo:"Áudio original liberado pra contas comerciais. Vira um lembrete leve do seu serviço.",
- passos:["Grave você ou seu produto parado, olhando pra câmera","Texto: 'só lembrando que eu faço [serviço]'","Legenda com o jeito de contratar"],
- nichos:[["Manicure","'tem horário sexta'"],["Freelancer","'ainda tenho 2 vagas em novembro'"],["Confeitaria","'encomendas de Natal abertas'"]],
- audio:["Please Keep Me in Your Thoughts (original)",true],fontes:["sp","nu"],busca:"please keep me in your thoughts"}
-];
-
-// Post real: adicione em cada formato post (link do post), img (assets/ref-<id>.jpg) e perfil (@usuario).
-// Sem isso, a página mostra a capa ilustrativa e a busca do Instagram.
-// Capa ilustrativa de cada formato: [linha pequena, texto grande]
-const CAPA = {
-  "upside-down":["transição de mãos","<span class=flip>ANTES</span> DEPOIS"],
-  "grwm-loading":["me arrumando","0% → 100%"],
-  "getting-robbed":["eu sendo assaltada enquanto…","lia o último capítulo"],
-  "reaction-if":["minha reação se…","contasse caloria do alface"],
-  "reaction-numbers":["minha reação a","10 → 1.000 alunas"],
-  "message-from-a":["Mensagem de A…","27 abas abertas de novo? -A"],
-  "ramalama":["taking a picture…","A REVELAÇÃO"],
-  "patient-zero":["o grande dia","VOLTA DA VITÓRIA"],
-  "the-process":["the process","rascunho → arte final"],
-  "vlog-timestamps":["07:00 · 09:30 · 12:00","MEU DIA"],
-  "quero-mais":["nessa primavera","EU QUERO MAIS…"],
-  "aholic":["oficialmente","PRIMAVERA­HOLIC"],
-  "ghosting-working":["sumi porque","TÔ TRABALHANDO"],
-  "where-are-you":["cadê você?","EM CASA"],
-  "wore-went-did":["vesti · fui · fiz","3 TELAS"],
-  "some-people-call-me":["algumas pessoas me chamam de…","A MOÇA DA SOBRANCELHA"],
-  "mum-into-me":["transformei minha","MÃE EM MIM"],
-  "one-question":["me defina em","UMA PALAVRA"],
-  "rock-paper-scissors":["pedra · papel · tesoura","PROBLEMA VS. SOLUÇÃO"],
-  "thats-so-you":["colagem","ISSO É TÃO VOCÊ"],
-  "this-is-your-sign":["esse é o seu","SINAL"],
-  "things-i-know-at":["coisas que eu sei","AOS 34"],
-  "red-card":["merece","CARTÃO VERMELHO"],
-  "said-out-loud":["coisas que já falei","EM VOZ ALTA"],
-  "unfortunately-love":["infelizmente","EU AMO…"],
-  "gold-star":["pequenas vitórias","★ ESTRELINHA"],
-  "grr-mondays":["#grrmondays","SEGUNDA: GRR"],
-  "problem-first":["primeiro o problema","DEPOIS A SOLUÇÃO"],
-  "recurring-character":["episódio 12","A CLIENTE INDECISA"],
-  "keep-me-in-thoughts":["só lembrando que","TEM HORÁRIO SEXTA"]
-};
-const GREENS = [["#1f4d36","#4f8a64"],["#2f6b4a","#9cc3a6"],["#14402c","#2f7a4f"],["#3e6b4f","#b9cfa9"],["#24563d","#6aa37c"],["#0f3524","#5f8f6d"]];
-const heatTxt = {alta:"Em alta",subindo:"Subindo",sazonal:"Sazonal"};
+const F = [{"n": 1, "id": "abre-a-foto", "nome": "Abre a foto (só envia)", "orig": "Abre la foto", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/Dd1o2-jGzzR/", "perfil": "@dr.yummynld", "img": "assets/refs/01-a.jpg", "img2": "assets/refs/01-b.jpg", "audio": "Noche En La Ciudad", "numeros": "128 curtidas · 329 envios", "resumo": "Carrossel de 2 fotos feito pra ser enviado. A 1ª imita uma foto de visualização única do WhatsApp com 'Abre a foto:'. A 2ª revela um meme com a marca: 'Você me deve uns doces da Dr. Yummy'. A legenda só diz 'Só envia 👀'.", "passos": ["Foto 1: fundo de textura do seu produto + 'Abre a foto:' + o balão de foto de visualização única", "Foto 2: o meme com a cobrança ('Você me deve…') + sua marca + o produto", "Legenda curta pedindo pra enviar pra alguém"], "nichos": [["Confeitaria", "'Você me deve um bolo da @suamarca'"], ["Salão / lash", "'Você me deve um dia de beleza na @suamarca'"], ["Personal / estúdio", "'Você me deve uma aula experimental comigo'"]]}, {"n": 2, "id": "posso-aliviar-o-clima", "nome": "Posso aliviar o clima?", "orig": "Carrossel de frases de alívio", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/Dd4CBsRjUHN/", "perfil": "@barbaraangeli.psi", "img": "assets/refs/02-a.jpg", "img2": "assets/refs/02-b.jpg", "audio": "Espresso · Sabrina Carpenter", "numeros": "188 curtidas · 23 envios · 10 reposts", "resumo": "Carrossel de 5 fotos. A capa é uma selfie no espelho com a pergunta 'posso aliviar o clima?'. Os slides seguintes trazem frases de acolhimento sobre um fundo de textura, como 'Você pode ser muito boa no que faz e ainda não saber exatamente qual é o próximo passo.'", "passos": ["Capa: foto sua, leve e sorrindo, com 'posso aliviar o clima?'", "3 a 4 slides com uma frase de alívio cada, sobre um fundo de textura (tecido, listras)", "Legenda curta e informal, com a mesma pergunta"], "nichos": [["Finanças", "'Você pode ganhar pouco agora e ainda estar no caminho certo'"], ["Maternidade", "'Você pode amar seu filho e ainda sentir saudade de você'"], ["Nutrição", "'Você pode comer um doce e continuar cuidando da sua saúde'"]]}, {"n": 3, "id": "um-dia-comigo", "nome": "Um dia comigo (capa em faixas com horários)", "orig": "Day in my life · timestamps", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DdpsspgDCK6/", "perfil": "", "img": "assets/refs/03-a.jpg", "audio": "", "numeros": "997 curtidas · 35 comentários", "resumo": "Carrossel de 10 fotos. A capa junta 6 fotos do dia em faixas horizontais, cada uma com o horário (6:15, 7:00, 9:15, 12:50, 19:00, 22:50), e o título 'um dia comigo' no meio. Os slides seguintes mostram cada momento.", "passos": ["Fotografe 6 momentos do seu dia e anote o horário de cada um", "Capa: empilhe as fotos em faixas horizontais com o horário em cada uma e 'um dia comigo' no centro", "Slides 2 a 10: um momento por foto, com uma frase curta"], "nichos": [["Confeiteira", "um dia de produção: da massa às 6h até a entrega às 19h"], ["Psicóloga", "um dia de atendimentos, estudo e autocuidado"], ["Social media", "um dia gravando, editando e respondendo cliente"]]}, {"n": 4, "id": "nunca-e-tarde", "nome": "Nunca é tarde demais para…", "orig": "Carrossel de frase continuada", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DdjHsxZFyPq/", "perfil": "", "img": "assets/refs/04-a.jpg", "img2": "assets/refs/04-b.jpg", "audio": "", "numeros": "77 reposts · 10 comentários", "resumo": "Carrossel de 7 fotos. A capa é uma selfie no espelho com 'nunca é tarde demais para…' em letras grandes e estrelinhas amarelas. Cada slide seguinte completa a frase com uma foto do dia a dia, como 'fazer algo que vc ama'.", "passos": ["Capa: foto sua com 'nunca é tarde demais para…' em letra grande", "5 a 6 slides, cada um completando a frase sobre uma foto que combine", "Mesmo estilo de texto em todos (branco, com estrelinhas)"], "nichos": [["Fitness", "…começar a treinar / …correr sua primeira prova"], ["Idiomas", "…aprender inglês / …viajar sozinha"], ["Carreira", "…mudar de área / …abrir seu negócio"]]}, {"n": 5, "id": "deixa-eu-me-apresentar", "nome": "Se você chegou agora, deixa eu me apresentar", "orig": "Carrossel de apresentação", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/Dd9HTR6EZ9s/", "perfil": "Jéssica Tate · Marketing Digital", "img": "assets/refs/05-a.jpg", "audio": "", "numeros": "357 curtidas · 20 comentários", "resumo": "Carrossel de 8 fotos pra quem acabou de chegar no perfil. A capa é um retrato bem produzido, com 'Se você chegou agora, deixa eu me apresentar.' e o nome e a profissão em letra pequena. Os slides seguintes contam quem ela é e o que faz.", "passos": ["Capa: seu melhor retrato + 'Se você chegou agora, deixa eu me apresentar.' + nome e profissão pequenos", "Slides 2 a 7: quem você é, sua história, o que você faz e pra quem, bastidores e uma curiosidade", "Último slide: o que a pessoa encontra no perfil e o convite pra seguir ou chamar no direct"], "nichos": [["Nutricionista", "quem sou, minha forma de atender e o que ensino aqui"], ["Lojista", "quem está por trás da loja e como tudo começou"], ["Fotógrafa", "minha história, meus ensaios favoritos e como agendar"]]}, {"n": 6, "id": "onde-fui-vesti-comi", "nome": "Onde fui, o que vesti, o que comi", "orig": "Split screen em 3 faixas", "tipo": ["Reels"], "nivel": "Fácil", "post": "https://www.instagram.com/reel/Dd_u57wxSLK/", "perfil": "@brenda_maress", "img": "assets/refs/06-a.jpg", "audio": "Modelo pronto no Instagram (botão 'Usar modelo')", "numeros": "1.583 curtidas · 1.403 salvamentos · 815 envios", "resumo": "Reels com a tela dividida em 3 faixas, cada uma com um vídeo e um título em letra serifada: 'onde fui', 'o que vesti', 'o que comi'. Faz parte de uma série ('turistando em BH'). Tem modelo pronto no Instagram.", "passos": ["Grave 3 clipes curtos: o lugar, o seu look e a comida", "Toque em 'Usar modelo' no Reels de referência e encaixe seus clipes", "Na legenda, conte o lugar e transforme em série"], "nichos": [["Corretora", "onde fui (o imóvel), o que vi (a vista), o que amei (o detalhe)"], ["Confeitaria", "o pedido, a decoração, o resultado"], ["Personal", "onde treinei, o que vesti, o que comi depois"]]}, {"n": 7, "id": "vitamina-b-rownie", "nome": "Trocadilho + close satisfatório", "orig": "Preciso repor vitamina B(rownie)", "tipo": ["Reels"], "nivel": "Fácil", "post": "https://www.instagram.com/reel/DdG6qA9RHvZ/", "perfil": "@bemamadodocess", "img": "assets/refs/07-a.jpg", "audio": "I Thought I Saw You · Him (áudio em alta)", "numeros": "2.697 curtidas · 2.685 envios · 2.586 salvamentos", "resumo": "Reels de um close bem de perto e satisfatório (a colher mexendo a massa de chocolate) com um trocadilho na tela: 'Preciso repor vitamina B(rownie)'. Uma cena só, sem fala. Tem modelo pronto no Instagram.", "passos": ["Grave um close bem de perto e satisfatório do seu produto ou serviço", "Escreva um trocadilho curto com o nome dele na tela", "Use o áudio em alta ou toque em 'Usar modelo'"], "nichos": [["Café", "'Preciso de uma dose de vitamina C(afé)'"], ["Skincare", "'Hoje é dia de vitamina S(érum)'"], ["Floricultura", "'Repondo vitamina F(lor)'"]]}, {"n": 8, "id": "abc-de-para", "nome": "ABC de antes e de agora", "orig": "De: A de amor… Para: A de ácido hialurônico…", "tipo": ["Foto", "Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DdZDFPRu7r2/", "perfil": "", "img": "assets/refs/08-a.jpg", "audio": "", "numeros": "1.573 curtidas · 50 reposts · 34 comentários", "resumo": "Foto dividida ao meio. À esquerda, uma foto de infância com 'De: A de amor, B de baixinho, C de coração'. À direita, uma foto atual e profissional com 'Para: A de ácido hialurônico, B de botox, C de colágeno'. O humor está em trocar o ABC da escola pelo ABC da sua profissão.", "passos": ["Lado esquerdo: uma foto sua de criança com 'De:' e o ABC da escola", "Lado direito: uma foto atual com 'Para:' e o ABC do seu nicho", "Texto branco simples, centralizado em cada lado"], "nichos": [["Contadora", "A de alíquota, B de balanço, C de CNPJ"], ["Nutricionista", "A de alimentação, B de bioimpedância, C de carboidrato"], ["Marketing", "A de algoritmo, B de branding, C de conversão"]]}, {"n": 9, "id": "coisas-que-gostaria", "nome": "Coisas que eu gostaria que você soubesse", "orig": "Carrossel 'versão [tema]'", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DeCcJGsETlX/", "perfil": "@biancaminuzzi.dermato", "img": "assets/refs/09-a.jpg", "audio": "", "numeros": "94 curtidas · 5 reposts", "resumo": "Carrossel de 8 fotos. A capa é um retrato profissional com 'Coisas que eu gostaria que você soubesse' e uma etiqueta 'versão cabelos'. Cada slide traz uma verdade da profissão que o público não sabe. A etiqueta 'versão…' deixa virar série.", "passos": ["Capa: retrato seu + 'Coisas que eu gostaria que você soubesse' + etiqueta 'versão [tema]'", "6 slides, cada um com uma verdade curta da sua área", "Repita com outras versões nas próximas semanas"], "nichos": [["Dentista", "versão clareamento"], ["Personal", "versão emagrecimento"], ["Advogada", "versão divórcio"]]}, {"n": 10, "id": "meses-para-2027", "nome": "X meses para 2027", "orig": "Contagem regressiva pro fim do ano", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DdTjfBSgA3T/", "perfil": "", "img": "assets/refs/10-a.jpg", "audio": "", "numeros": "12 comentários · 3 reposts", "resumo": "Carrossel de 6 fotos. A capa é uma selfie no espelho no local de trabalho com 'três meses para 2027' (o ano em destaque amarelo) e o subtítulo '(o que eu faria ainda em setembro para mudar meus hábitos)'. Os slides trazem as ações práticas.", "passos": ["Capa: foto sua + 'X meses para 2027' + subtítulo '(o que eu faria ainda em [mês] para…)'", "4 a 5 slides com uma ação prática cada", "Último slide: convite pra salvar e começar hoje"], "nichos": [["Finanças", "…para fechar o ano sem dívida"], ["Estética", "…para chegar no verão com a pele pronta"], ["Empreendedoras", "…para começar 2027 com agenda cheia"]]}, {"n": 11, "id": "como-se-fosse-fofoca", "nome": "Te explicando como se fosse uma fofoca", "orig": "Explicação em tom de fofoca", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DdwTp69ESQ5/", "perfil": "", "img": "assets/refs/11-a.jpg", "audio": "", "numeros": "177 curtidas · 12 reposts · 8 comentários", "resumo": "Carrossel de 6 fotos. A capa é uma selfie no espelho com 'Te explicando sobre suplementos como se fosse uma fofoca', letras grandes amarelo-claro, emojis de coração e brilho e a etiqueta 'por uma nutricionista'. Os slides explicam o tema técnico no tom de quem conta uma fofoca.", "passos": ["Capa: selfie + 'Te explicando sobre [tema] como se fosse uma fofoca' + etiqueta 'por uma [profissão]'", "Slides contando o assunto como fofoca: 'amiga, você não sabe…', 'menina, o colágeno…'", "Último slide: 'quer mais fofoca? comenta o próximo tema'"], "nichos": [["Contadora", "…imposto de renda como se fosse uma fofoca"], ["Dermatologista", "…ácidos como se fosse uma fofoca"], ["Advogada", "…direitos da gestante como se fosse uma fofoca"]]}, {"n": 12, "id": "um-dia-comigo-calendario", "nome": "Um dia comigo (capa com calendário)", "orig": "Day in my life · calendar sticker", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DdpVOXKld7h/", "perfil": "", "img": "assets/refs/12-a.jpg", "audio": "", "numeros": "1.537 curtidas · 18 reposts · 15 comentários", "relacionado": "um-dia-comigo", "resumo": "Carrossel de 11 fotos. A capa é uma selfie no espelho, já pronta pra sair, com 'Um dia COMIGO!' em arco, estrelinhas e uma figurinha de calendário com o dia ('TERÇA 22'). Os slides seguintes mostram o dia em ordem.", "passos": ["Capa: selfie de look pronto + 'Um dia comigo!' em arco + figurinha de calendário com o dia da semana e a data", "Slides 2 a 11: os momentos do dia em ordem, com legenda curta", "Feche com como o dia terminou"], "nichos": [["Dentista", "um dia de consultório: da primeira paciente ao último clareamento"], ["Estudante", "um dia de faculdade e estágio"], ["Dona de loja", "um dia de envios, fotos e atendimento"]]}, {"n": 13, "id": "verdades-duras-fotos-fofinhas", "nome": "Verdades duras com fotos fofinhas", "orig": "Hard truths with cute pictures", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DdbthIWlkRz/", "perfil": "", "img": "assets/refs/13-a.jpg", "audio": "", "numeros": "28,5 mil curtidas · 3.729 reposts · 38 comentários", "resumo": "Carrossel de 8 fotos. A capa tem 'DIZENDO VERDADES DURAS COM FOTOS FOFINHAS' em letras grandes amarelo-claro, com emojis de brilho, coração e laço, sobre uma foto delicada (flores). Cada slide junta uma verdade dura a uma foto fofa. O contraste é a graça.", "passos": ["Capa: foto delicada + 'Dizendo verdades duras com fotos fofinhas' em letra grande + emojis fofos", "6 a 7 slides: cada verdade dura do seu nicho sobre uma foto fofa (flores, bichinhos, doces)", "Mantenha as frases curtas e diretas"], "nichos": [["Finanças", "'Parcelar no cartão não é ter dinheiro' sobre um gatinho"], ["Fitness", "'Você não precisa de motivação, precisa de rotina' sobre flores"], ["Marketing", "'Seguidor não paga boleto' sobre um cupcake"]]}, {"n": 14, "id": "derrotas-da-semana", "nome": "Derrotas da semana", "orig": "Week's losses dump", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DdeA9wRHPiJ/", "perfil": "", "img": "assets/refs/14-a.jpg", "img2": "assets/refs/14-b.jpg", "audio": "", "numeros": "2.094 curtidas · 26 comentários", "resumo": "Carrossel de 10 fotos no estilo do app Notas ('< Notas' no topo). A capa é uma selfie tomando café com 'derrotas da semana', com 'semana' em letra cursiva. Os slides mostram fotos reais do dia a dia com textos sinceros e bem-humorados sobre o que deu errado.", "passos": ["Capa: selfie espontânea + 'derrotas da semana' + o '< Notas' do iPhone no topo", "Slides: fotos reais da semana com um texto curto e honesto sobre o que deu errado", "Termine com uma vitória pequena ou uma reflexão leve"], "nichos": [["Empreendedora", "'o cliente sumiu depois do orçamento'"], ["Mãe", "'o almoço queimou enquanto eu respondia e-mail'"], ["Fitness", "'faltei 2 treinos e comi brigadeiro de panela'"]]}, {"n": 15, "id": "eu-tenho-anos-e", "nome": "Eu tenho [idade] anos e…", "orig": "Confissões da idade", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "", "perfil": "", "pendente": "link do post (o enviado era o mesmo do post 14)", "img": "assets/refs/15-a.jpg", "img2": "assets/refs/15-b.jpg", "audio": "", "numeros": "2.638 curtidas · 56 comentários · 44 reposts", "resumo": "Carrossel de 7 fotos. A capa é uma selfie sorrindo com 'Eu tenho 36 anos e…' em letras grandes e estrelinhas. Cada slide completa a frase com uma confissão sincera sobre uma foto do dia a dia, como 'ainda estou aprendendo quem eu sou além de ser mãe, filha, namorada e profissional.'", "passos": ["Capa: selfie sorrindo + 'Eu tenho [idade] anos e…'", "5 a 6 slides, cada um completando a frase com uma confissão sincera", "Fotos do dia a dia, texto branco grande e estrelinhas"], "nichos": [["Finanças", "'…só agora aprendi a fazer orçamento'"], ["Maternidade", "'…ainda me sinto perdida às vezes'"], ["Carreira", "'…mudei de profissão e não me arrependo'"]]}, {"n": 16, "id": "conselhos-toxicos", "nome": "Conselhos tóxicos que eu te daria", "orig": "Toxic advice I'd give you · Part II", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/Ddh08zbgFME/", "perfil": "", "img": "assets/refs/16-a.jpg", "audio": "", "numeros": "4.339 curtidas · 297 reposts", "resumo": "Carrossel de 8 fotos. A capa é uma selfie no espelho da academia com 'Conselhos tóxicos que eu te daria.' em letras grandes cor creme e um 'Part II' manuscrito. Os slides trazem conselhos exagerados e sem filtro, que na verdade são motivação dura. Já é a parte 2, então virou série.", "passos": ["Capa: selfie no seu ambiente + 'Conselhos tóxicos que eu te daria.' + 'Part I' escrito à mão", "6 a 7 slides com um conselho exagerado e direto por slide", "Faça a Parte II e a III se a primeira for bem"], "nichos": [["Personal", "'Se não postou o treino, não treinou'"], ["Finanças", "'Não compre nada que você não compraria duas vezes'"], ["Estética", "'Protetor solar até pra ir na geladeira'"]]}, {"n": 17, "id": "desfazendo-lavagem-cerebral", "nome": "Desfazendo a lavagem cerebral que fizeram em você", "orig": "Quebrando crenças do nicho", "tipo": ["Carrossel"], "nivel": "Fácil", "post": "https://www.instagram.com/p/DeKDnrygcvU/", "perfil": "Mari Brentano", "img": "assets/refs/17-a.jpg", "audio": "", "numeros": "4 reposts · 2 comentários", "resumo": "Carrossel de 7 fotos. A capa é uma selfie de rosto com o fundo escurecido e 'Desfazendo a lavagem cerebral que fizeram em você' em letras amarelas, com o nome dela embaixo no estilo da barra do app Notas. Cada slide derruba uma crença comum do nicho.", "passos": ["Capa: selfie com o fundo escurecido + 'Desfazendo a lavagem cerebral que fizeram em você' + seu nome embaixo", "Um slide por crença: o que te disseram e a verdade", "Último slide: 'qual crença você ainda carrega?'"], "nichos": [["Nutricionista", "'te disseram que comer à noite engorda'"], ["Finanças", "'te disseram que investir é só pra rico'"], ["Maternidade", "'te disseram que mãe boa não pode cansar'"]]}];
+const DESTAQUE = [13, 16, 7];
+const VISUAL = [2, 4, 15];
 const state = {tipo:"Todos", q:""};
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const igSearch = q => "https://www.instagram.com/explore/search/keyword/?q=" + encodeURIComponent(q);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const IG_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
-
-function thumb(f, i){
-  if (f.img) return `<a href="${f.post || igSearch(f.busca)}" target="_blank" rel="noopener"><img class="thumb real" src="${esc(f.img)}" alt="Post de referência: ${esc(f.nome)}" loading="lazy"></a><div class="cap">${f.perfil ? esc(f.perfil) : "post real"}</div>`;
-  const [a,b] = GREENS[i % GREENS.length], c = CAPA[f.id] || ["",f.nome];
-  const car = f.tipo[0] === "Carrossel";
-  return `<div class="thumb ${car ? "carrossel" : ""}" style="background:linear-gradient(160deg,${a},${b})" role="img" aria-label="Ilustração do formato ${esc(f.nome)}">
-    <span class="kind">${car ? "Carrossel" : f.tipo[0]}</span>
-    <span class="t1">${esc(c[0])}</span><span class="t2">${c[1]}</span>
-    ${car ? '<span class="dots"><i></i><i></i><i></i><i></i></span>' : '<span class="bar-ig"></span>'}
-  </div><div class="cap">ilustração</div>`;
-}
+const tipos = [...new Set(F.flatMap(f => f.tipo))];
 
 function row(f){
-  const i = F.indexOf(f);
-  const aud = f.audio[1] === false ? `<span class="nao">só conta criadora</span>` : f.audio[1] === true ? "liberado p/ conta comercial" : "";
+  const pills = [
+    DESTAQUE.includes(f.n) ? '<span class="pill top">Destaque</span>' : "",
+    VISUAL.includes(f.n) ? '<span class="pill visual">Visual da semana</span>' : "",
+    ...f.tipo.map(t => `<span class="pill">${t}</span>`),
+    `<span class="pill">${f.nivel}</span>`
+  ].join("");
+  const shot = f.post
+    ? `<a class="shot" href="${esc(f.post)}" target="_blank" rel="noopener"><img src="${esc(f.img)}" alt="Print do post de referência: ${esc(f.nome)}" loading="lazy"></a>`
+    : `<span class="shot"><img src="${esc(f.img)}" alt="Print do post de referência: ${esc(f.nome)}" loading="lazy"></span>`;
+  const link = f.post
+    ? `<a class="ig" href="${esc(f.post)}" target="_blank" rel="noopener">${IG_ICON} Ver post</a>`
+    : `<span class="soon">Link em breve</span>`;
   return `<tr id="${f.id}">
-    <td class="c-fmt"><div class="n">${String(i+1).padStart(2,"0")}</div>
-      <div class="name">${esc(f.nome)}</div><div class="orig">${esc(f.orig)}</div>
-      <div class="pills"><span class="pill ${f.calor}">${heatTxt[f.calor]}</span>${f.tipo.map(t=>`<span class="pill">${t}</span>`).join("")}<span class="pill">${f.nivel}</span></div>
-      <div class="audio"><b>Áudio:</b> ${esc(f.audio[0])}${aud ? " · " + aud : ""}</div></td>
-    <td class="c-ref">${thumb(f,i)}</td>
+    <td class="c-fmt"><div class="n">${String(f.n).padStart(2,"0")}</div>
+      <div class="name">${esc(f.nome)}</div>
+      <div class="pills">${pills}</div>
+      <div class="meta">${f.numeros ? `<span><b>Engajamento:</b> ${esc(f.numeros)}</span>` : ""}${f.audio ? `<span><b>Áudio:</b> ${esc(f.audio)}</span>` : ""}</div></td>
+    <td class="c-ref">${shot}<div class="cap">toque pra abrir</div></td>
     <td class="c-ad"><p class="resumo">${esc(f.resumo)}</p>
       <ul class="ideas">${f.nichos.map(([n,e])=>`<li><b>${esc(n)}:</b> ${esc(e)}</li>`).join("")}</ul>
-      <details><summary>Como gravar</summary><ol>${f.passos.map(p=>`<li>${esc(p)}</li>`).join("")}</ol></details></td>
-    <td class="c-ig"><a class="ig" href="${f.post || igSearch(f.busca)}" target="_blank" rel="noopener">${IG_ICON} ${f.post ? "Ver post" : "Ver no Instagram"}</a>${f.post ? `<a class="more" href="${igSearch(f.busca)}" target="_blank" rel="noopener">Mais posts da trend</a>` : ""}
-      <div class="src"><span>Fonte:</span>${f.fontes.map(k=>`<a href="${S[k].u}" target="_blank" rel="noopener">${esc(S[k].n)}</a>`).join("")}</div></td>
+      <details><summary>Como fazer</summary><ol>${f.passos.map(p=>`<li>${esc(p)}</li>`).join("")}</ol></details></td>
+    <td class="c-ig">${link}${f.perfil ? `<div class="who">${esc(f.perfil)}</div>` : ""}</td>
   </tr>`;
 }
-
 function chips(){
-  document.getElementById("chips").innerHTML = ["Todos","Reels","Carrossel","Foto"].map(t =>
+  document.getElementById("chips").innerHTML = ["Todos", ...tipos].map(t =>
     `<button class="chip" data-tipo="${t}" aria-pressed="${state.tipo===t}">${t}</button>`).join(" ");
 }
 function render(){
