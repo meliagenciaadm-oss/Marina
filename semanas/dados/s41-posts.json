@@ -70,5 +70,40 @@
         "'Você pode comer um doce e continuar cuidando da sua saúde'"
       ]
     ]
+  },
+  {
+    "n": 3,
+    "id": "um-dia-comigo",
+    "nome": "Um dia comigo (capa em faixas com horários)",
+    "orig": "Day in my life · timestamps",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DdpsspgDCK6/",
+    "perfil": "",
+    "img": "assets/refs/03-a.jpg",
+    "audio": "",
+    "numeros": "997 curtidas · 35 comentários",
+    "resumo": "Carrossel de 10 fotos. A capa junta 6 fotos do dia em faixas horizontais, cada uma com o horário (6:15, 7:00, 9:15, 12:50, 19:00, 22:50), e o título 'um dia comigo' no meio. Os slides seguintes mostram cada momento.",
+    "passos": [
+      "Fotografe 6 momentos do seu dia e anote o horário de cada um",
+      "Capa: empilhe as fotos em faixas horizontais com o horário em cada uma e 'um dia comigo' no centro",
+      "Slides 2 a 10: um momento por foto, com uma frase curta"
+    ],
+    "nichos": [
+      [
+        "Confeiteira",
+        "um dia de produção: da massa às 6h até a entrega às 19h"
+      ],
+      [
+        "Psicóloga",
+        "um dia de atendimentos, estudo e autocuidado"
+      ],
+      [
+        "Social media",
+        "um dia gravando, editando e respondendo cliente"
+      ]
+    ]
   }
 ]
