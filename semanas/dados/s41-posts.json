@@ -4,7 +4,9 @@
     "id": "abre-a-foto",
     "nome": "Abre a foto (só envia)",
     "orig": "Abre la foto",
-    "tipo": ["Carrossel"],
+    "tipo": [
+      "Carrossel"
+    ],
     "nivel": "Fácil",
     "post": "https://www.instagram.com/p/Dd1o2-jGzzR/",
     "perfil": "@dr.yummynld",
@@ -19,9 +21,54 @@
       "Legenda curta pedindo pra enviar pra alguém"
     ],
     "nichos": [
-      ["Confeitaria", "'Você me deve um bolo da @suamarca'"],
-      ["Salão / lash", "'Você me deve um dia de beleza na @suamarca'"],
-      ["Personal / estúdio", "'Você me deve uma aula experimental comigo'"]
+      [
+        "Confeitaria",
+        "'Você me deve um bolo da @suamarca'"
+      ],
+      [
+        "Salão / lash",
+        "'Você me deve um dia de beleza na @suamarca'"
+      ],
+      [
+        "Personal / estúdio",
+        "'Você me deve uma aula experimental comigo'"
+      ]
+    ]
+  },
+  {
+    "n": 2,
+    "id": "posso-aliviar-o-clima",
+    "nome": "Posso aliviar o clima?",
+    "orig": "Carrossel de frases de alívio",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/Dd4CBsRjUHN/",
+    "perfil": "@barbaraangeli.psi",
+    "img": "assets/refs/02-a.jpg",
+    "img2": "assets/refs/02-b.jpg",
+    "audio": "Espresso · Sabrina Carpenter",
+    "numeros": "188 curtidas · 23 envios · 10 reposts",
+    "resumo": "Carrossel de 5 fotos. A capa é uma selfie no espelho com a pergunta 'posso aliviar o clima?'. Os slides seguintes trazem frases de acolhimento sobre um fundo de textura, como 'Você pode ser muito boa no que faz e ainda não saber exatamente qual é o próximo passo.'",
+    "passos": [
+      "Capa: foto sua, leve e sorrindo, com 'posso aliviar o clima?'",
+      "3 a 4 slides com uma frase de alívio cada, sobre um fundo de textura (tecido, listras)",
+      "Legenda curta e informal, com a mesma pergunta"
+    ],
+    "nichos": [
+      [
+        "Finanças",
+        "'Você pode ganhar pouco agora e ainda estar no caminho certo'"
+      ],
+      [
+        "Maternidade",
+        "'Você pode amar seu filho e ainda sentir saudade de você'"
+      ],
+      [
+        "Nutrição",
+        "'Você pode comer um doce e continuar cuidando da sua saúde'"
+      ]
     ]
   }
 ]
