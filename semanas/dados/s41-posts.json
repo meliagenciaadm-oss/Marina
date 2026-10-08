@@ -317,5 +317,40 @@
         "versão divórcio"
       ]
     ]
+  },
+  {
+    "n": 10,
+    "id": "meses-para-2027",
+    "nome": "X meses para 2027",
+    "orig": "Contagem regressiva pro fim do ano",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DdTjfBSgA3T/",
+    "perfil": "",
+    "img": "assets/refs/10-a.jpg",
+    "audio": "",
+    "numeros": "12 comentários · 3 reposts",
+    "resumo": "Carrossel de 6 fotos. A capa é uma selfie no espelho no local de trabalho com 'três meses para 2027' (o ano em destaque amarelo) e o subtítulo '(o que eu faria ainda em setembro para mudar meus hábitos)'. Os slides trazem as ações práticas.",
+    "passos": [
+      "Capa: foto sua + 'X meses para 2027' + subtítulo '(o que eu faria ainda em [mês] para…)'",
+      "4 a 5 slides com uma ação prática cada",
+      "Último slide: convite pra salvar e começar hoje"
+    ],
+    "nichos": [
+      [
+        "Finanças",
+        "…para fechar o ano sem dívida"
+      ],
+      [
+        "Estética",
+        "…para chegar no verão com a pele pronta"
+      ],
+      [
+        "Empreendedoras",
+        "…para começar 2027 com agenda cheia"
+      ]
+    ]
   }
 ]
