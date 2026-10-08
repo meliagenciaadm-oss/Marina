@@ -1,0 +1,27 @@
+[
+  {
+    "n": 1,
+    "id": "abre-a-foto",
+    "nome": "Abre a foto (só envia)",
+    "orig": "Abre la foto",
+    "tipo": ["Carrossel"],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/Dd1o2-jGzzR/",
+    "perfil": "@dr.yummynld",
+    "img": "assets/refs/01-a.jpg",
+    "img2": "assets/refs/01-b.jpg",
+    "audio": "Noche En La Ciudad",
+    "numeros": "128 curtidas · 329 envios",
+    "resumo": "Carrossel de 2 fotos feito pra ser enviado. A 1ª imita uma foto de visualização única do WhatsApp com 'Abre a foto:'. A 2ª revela um meme com a marca: 'Você me deve uns doces da Dr. Yummy'. A legenda só diz 'Só envia 👀'.",
+    "passos": [
+      "Foto 1: fundo de textura do seu produto + 'Abre a foto:' + o balão de foto de visualização única",
+      "Foto 2: o meme com a cobrança ('Você me deve…') + sua marca + o produto",
+      "Legenda curta pedindo pra enviar pra alguém"
+    ],
+    "nichos": [
+      ["Confeitaria", "'Você me deve um bolo da @suamarca'"],
+      ["Salão / lash", "'Você me deve um dia de beleza na @suamarca'"],
+      ["Personal / estúdio", "'Você me deve uma aula experimental comigo'"]
+    ]
+  }
+]
