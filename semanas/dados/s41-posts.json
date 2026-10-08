@@ -352,5 +352,40 @@
         "…para começar 2027 com agenda cheia"
       ]
     ]
+  },
+  {
+    "n": 11,
+    "id": "como-se-fosse-fofoca",
+    "nome": "Te explicando como se fosse uma fofoca",
+    "orig": "Explicação em tom de fofoca",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DdwTp69ESQ5/",
+    "perfil": "",
+    "img": "assets/refs/11-a.jpg",
+    "audio": "",
+    "numeros": "177 curtidas · 12 reposts · 8 comentários",
+    "resumo": "Carrossel de 6 fotos. A capa é uma selfie no espelho com 'Te explicando sobre suplementos como se fosse uma fofoca', letras grandes amarelo-claro, emojis de coração e brilho e a etiqueta 'por uma nutricionista'. Os slides explicam o tema técnico no tom de quem conta uma fofoca.",
+    "passos": [
+      "Capa: selfie + 'Te explicando sobre [tema] como se fosse uma fofoca' + etiqueta 'por uma [profissão]'",
+      "Slides contando o assunto como fofoca: 'amiga, você não sabe…', 'menina, o colágeno…'",
+      "Último slide: 'quer mais fofoca? comenta o próximo tema'"
+    ],
+    "nichos": [
+      [
+        "Contadora",
+        "…imposto de renda como se fosse uma fofoca"
+      ],
+      [
+        "Dermatologista",
+        "…ácidos como se fosse uma fofoca"
+      ],
+      [
+        "Advogada",
+        "…direitos da gestante como se fosse uma fofoca"
+      ]
+    ]
   }
 ]
