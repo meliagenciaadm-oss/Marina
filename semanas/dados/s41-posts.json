@@ -246,5 +246,41 @@
         "'Repondo vitamina F(lor)'"
       ]
     ]
+  },
+  {
+    "n": 8,
+    "id": "abc-de-para",
+    "nome": "ABC de antes e de agora",
+    "orig": "De: A de amor… Para: A de ácido hialurônico…",
+    "tipo": [
+      "Foto",
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DdZDFPRu7r2/",
+    "perfil": "",
+    "img": "assets/refs/08-a.jpg",
+    "audio": "",
+    "numeros": "1.573 curtidas · 50 reposts · 34 comentários",
+    "resumo": "Foto dividida ao meio. À esquerda, uma foto de infância com 'De: A de amor, B de baixinho, C de coração'. À direita, uma foto atual e profissional com 'Para: A de ácido hialurônico, B de botox, C de colágeno'. O humor está em trocar o ABC da escola pelo ABC da sua profissão.",
+    "passos": [
+      "Lado esquerdo: uma foto sua de criança com 'De:' e o ABC da escola",
+      "Lado direito: uma foto atual com 'Para:' e o ABC do seu nicho",
+      "Texto branco simples, centralizado em cada lado"
+    ],
+    "nichos": [
+      [
+        "Contadora",
+        "A de alíquota, B de balanço, C de CNPJ"
+      ],
+      [
+        "Nutricionista",
+        "A de alimentação, B de bioimpedância, C de carboidrato"
+      ],
+      [
+        "Marketing",
+        "A de algoritmo, B de branding, C de conversão"
+      ]
+    ]
   }
 ]
