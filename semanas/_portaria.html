@@ -1,5 +1,5 @@
 <style>
-/* Caixinha de entrada: cobre a página até a pessoa deixar nome e e-mail */
+/* Caixinha de entrada: cobre a página até a pessoa deixar nome e @ do Instagram */
 body.trancado{overflow:hidden}
 body.trancado .wrap{filter:blur(6px);pointer-events:none;user-select:none}
 .portaria{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg) 55%,transparent)}
@@ -8,12 +8,15 @@ body.trancado .wrap{filter:blur(6px);pointer-events:none;user-select:none}
 .porta img{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto;border:3px solid var(--mint)}
 .porta h2{font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1.05;margin:0;color:var(--forest);text-wrap:balance}
 .porta h2 em{font-style:normal;color:var(--leaf)}
-.porta p{margin:0;font-size:14px;color:var(--muted)}
+.porta p{margin:0;font-size:14px;color:var(--muted);text-wrap:balance}
 .porta form{display:grid;gap:10px;text-align:left}
 .porta label{font-size:13px;font-weight:600;display:grid;gap:4px}
-.porta input[type=text],.porta input[type=email]{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:11px 14px}
-.porta .aceite{display:flex;gap:8px;align-items:flex-start;font-weight:500;color:var(--muted);font-size:12.5px}
-.porta .aceite input{margin-top:2px;accent-color:var(--leaf)}
+.porta input[type=text]{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:11px 14px}
+.porta .arroba{display:flex;align-items:center;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding-left:14px}
+.porta .arroba span{color:var(--muted);font-weight:600}
+.porta .arroba input{border:0!important;background:transparent!important;flex:1;min-width:0;padding-left:4px!important}
+.porta .arroba:focus-within{outline:2px solid var(--leaf);outline-offset:1px}
+.porta .aviso{font-size:12px;color:var(--muted);text-align:center}
 .porta button{font:inherit;font-size:15px;font-weight:700;border:0;border-radius:999px;padding:12px;background:var(--band);color:var(--band-ink);cursor:pointer;margin-top:4px}
 .porta button:disabled{opacity:.6;cursor:wait}
 .porta .erro{color:var(--gold);font-size:13px;min-height:1em}
@@ -24,16 +27,16 @@ body.trancado .wrap{filter:blur(6px);pointer-events:none;user-select:none}
   <div class="porta" role="dialog" aria-modal="true" aria-labelledby="porta-titulo">
     <img src="/assets/foto-perfil.jpg" alt="">
     <h2 id="porta-titulo">Bem vinda ao meu <em>banco de ideias!</em></h2>
-    <p>Coloca teu nome e e-mail pra entrar :)</p>
+    <p>Coloca teu nome e teu @ do Instagram pra entrar :)</p>
     <form name="acessos" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="form-acesso">
       <input type="hidden" name="form-name" value="acessos">
       <input type="hidden" name="semana" value="{{SEMANA}}">
       <label class="bot">Não preencha <input name="bot-field"></label>
       <label for="ac-nome">Seu nome<input id="ac-nome" name="nome" type="text" autocomplete="name" required></label>
-      <label for="ac-email">Seu e-mail<input id="ac-email" name="email" type="email" autocomplete="email" required></label>
-      <label class="aceite" for="ac-aceite"><input id="ac-aceite" name="aceite" type="checkbox" value="sim" required> Aceito receber conteúdos por e-mail</label>
+      <label for="ac-insta">Seu @ do Instagram<span class="arroba"><span>@</span><input id="ac-insta" name="instagram" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="text" pattern="@?[A-Za-z0-9._]{1,30}" title="Só letras, números, ponto e _" required></span></label>
       <button type="submit" id="ac-entrar">Entrar</button>
       <div class="erro" id="ac-erro" role="alert"></div>
+      <p class="aviso">Teu nome e @ ficam só comigo, pra eu saber quem tá usando o banco de ideias.</p>
     </form>
   </div>
 </div>
@@ -49,11 +52,11 @@ body.trancado .wrap{filter:blur(6px);pointer-events:none;user-select:none}
   const abrir = () => { document.body.classList.remove("trancado"); portaria.hidden = true; };
 
   const salvo = ler();
-  if (salvo && salvo.email) {
+  if (salvo && salvo.instagram) {
     abrir();
     // Já entrou antes neste aparelho: registra o acesso desta semana sem pedir de novo.
     if (!(salvo.semanas || []).includes(SEMANA)) {
-      enviar({ nome: salvo.nome, email: salvo.email, aceite: "sim" }).then(r => {
+      enviar({ nome: salvo.nome, instagram: salvo.instagram }).then(r => {
         if (r.ok) gravar({ ...salvo, semanas: [...(salvo.semanas || []), SEMANA] });
       }).catch(() => {});
     }
@@ -66,10 +69,10 @@ body.trancado .wrap{filter:blur(6px);pointer-events:none;user-select:none}
   form.addEventListener("submit", e => {
     e.preventDefault();
     const btn = document.getElementById("ac-entrar"), erro = document.getElementById("ac-erro");
-    const nome = form.nome.value.trim(), email = form.email.value.trim();
+    const nome = form.nome.value.trim(), instagram = "@" + form.instagram.value.trim().replace(/^@+/, "").toLowerCase();
     btn.disabled = true; btn.textContent = "Entrando…"; erro.textContent = "";
-    enviar({ nome, email, aceite: "sim", "bot-field": form["bot-field"].value })
-      .then(r => { if (!r.ok) throw new Error(); gravar({ nome, email, semanas: [SEMANA] }); abrir(); })
+    enviar({ nome, instagram, "bot-field": form["bot-field"].value })
+      .then(r => { if (!r.ok) throw new Error(); gravar({ nome, instagram, semanas: [SEMANA] }); abrir(); })
       .catch(() => { erro.textContent = "Não deu pra entrar agora. Confere a internet e tenta de novo."; })
       .finally(() => { btn.disabled = false; btn.textContent = "Entrar"; });
   });

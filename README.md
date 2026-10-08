@@ -19,7 +19,7 @@ python3 semanas/montar.py s41 41 "5 a 11 de outubro" 08/10/2026 --destaque 13,15
 
 Isso gera:
 - `semanas/2026-<semana>.html`: prévia publicada no Claude.
-- `site/semana-<numero>/`: página do site no Netlify, com a caixinha de nome e e-mail.
+- `site/semana-<numero>/`: página do site no Netlify, com a caixinha de nome e @ do Instagram.
   O endereço principal do site abre a semana mais recente.
 
 O visual fica em `semanas/_modelo.html` e a caixinha de entrada em `semanas/_portaria.html`.
@@ -27,5 +27,5 @@ O visual fica em `semanas/_modelo.html` e a caixinha de entrada em `semanas/_por
 ## Site e lista de acessos (Netlify)
 
 O site é publicado a partir da pasta `site/` (veja `netlify.toml`).
-Cada pessoa que entra deixa nome e e-mail no formulário **acessos**, que aparece no painel do Netlify em **Forms**.
+Cada pessoa que entra deixa nome e @ do Instagram no formulário **acessos**, que aparece no painel do Netlify em **Forms**.
 Quem já entrou num aparelho não precisa preencher de novo, e o acesso de cada semana nova é registrado sozinho.
