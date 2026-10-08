@@ -14,7 +14,7 @@ Cada semana tem seu próprio arquivo em `semanas/` e é publicada com um link di
 2. Rode, por exemplo:
 
 ```
-python3 semanas/montar.py s41 41 "5 a 11 de outubro" 08/10/2026 --destaque 13,16,7 --visual 2,4,15
+python3 semanas/montar.py s41 41 "5 a 11 de outubro" 08/10/2026 --destaque 13,15,7 --visual 2,4
 ```
 
 3. Publique o `semanas/2026-<semana>.html` gerado junto com a pasta `assets/`.

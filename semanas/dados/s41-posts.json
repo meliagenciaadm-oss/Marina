@@ -497,43 +497,6 @@
   },
   {
     "n": 15,
-    "id": "eu-tenho-anos-e",
-    "nome": "Eu tenho [idade] anos e…",
-    "orig": "Confissões da idade",
-    "tipo": [
-      "Carrossel"
-    ],
-    "nivel": "Fácil",
-    "post": "",
-    "perfil": "",
-    "pendente": "link do post (o enviado era o mesmo do post 14)",
-    "img": "assets/refs/15-a.jpg",
-    "img2": "assets/refs/15-b.jpg",
-    "audio": "",
-    "numeros": "2.638 curtidas · 56 comentários · 44 reposts",
-    "resumo": "Carrossel de 7 fotos. A capa é uma selfie sorrindo com 'Eu tenho 36 anos e…' em letras grandes e estrelinhas. Cada slide completa a frase com uma confissão sincera sobre uma foto do dia a dia, como 'ainda estou aprendendo quem eu sou além de ser mãe, filha, namorada e profissional.'",
-    "passos": [
-      "Capa: selfie sorrindo + 'Eu tenho [idade] anos e…'",
-      "5 a 6 slides, cada um completando a frase com uma confissão sincera",
-      "Fotos do dia a dia, texto branco grande e estrelinhas"
-    ],
-    "nichos": [
-      [
-        "Finanças",
-        "'…só agora aprendi a fazer orçamento'"
-      ],
-      [
-        "Maternidade",
-        "'…ainda me sinto perdida às vezes'"
-      ],
-      [
-        "Carreira",
-        "'…mudei de profissão e não me arrependo'"
-      ]
-    ]
-  },
-  {
-    "n": 16,
     "id": "conselhos-toxicos",
     "nome": "Conselhos tóxicos que eu te daria",
     "orig": "Toxic advice I'd give you · Part II",
@@ -568,7 +531,7 @@
     ]
   },
   {
-    "n": 17,
+    "n": 16,
     "id": "desfazendo-lavagem-cerebral",
     "nome": "Desfazendo a lavagem cerebral que fizeram em você",
     "orig": "Quebrando crenças do nicho",
