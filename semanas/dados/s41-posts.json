@@ -423,5 +423,40 @@
         "um dia de envios, fotos e atendimento"
       ]
     ]
+  },
+  {
+    "n": 13,
+    "id": "verdades-duras-fotos-fofinhas",
+    "nome": "Verdades duras com fotos fofinhas",
+    "orig": "Hard truths with cute pictures",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DdbthIWlkRz/",
+    "perfil": "",
+    "img": "assets/refs/13-a.jpg",
+    "audio": "",
+    "numeros": "28,5 mil curtidas · 3.729 reposts · 38 comentários",
+    "resumo": "Carrossel de 8 fotos. A capa tem 'DIZENDO VERDADES DURAS COM FOTOS FOFINHAS' em letras grandes amarelo-claro, com emojis de brilho, coração e laço, sobre uma foto delicada (flores). Cada slide junta uma verdade dura a uma foto fofa. O contraste é a graça.",
+    "passos": [
+      "Capa: foto delicada + 'Dizendo verdades duras com fotos fofinhas' em letra grande + emojis fofos",
+      "6 a 7 slides: cada verdade dura do seu nicho sobre uma foto fofa (flores, bichinhos, doces)",
+      "Mantenha as frases curtas e diretas"
+    ],
+    "nichos": [
+      [
+        "Finanças",
+        "'Parcelar no cartão não é ter dinheiro' sobre um gatinho"
+      ],
+      [
+        "Fitness",
+        "'Você não precisa de motivação, precisa de rotina' sobre flores"
+      ],
+      [
+        "Marketing",
+        "'Seguidor não paga boleto' sobre um cupcake"
+      ]
+    ]
   }
 ]
