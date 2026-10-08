@@ -1,112 +1,144 @@
-<title>Radar de Formatos Semana 41</title>
+<title>Banco de Ideias Semana 41</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: ficha de pauta semanal; cabeçalho com resumo, barra de filtros fixa, grade de cartões de formato */
+/* Layout: capa com foto em arco + boas-vindas, depois uma tabela verde de formatos (vira cartões no celular) */
 :root{
-  --bg:#f6f3f7; --surface:#ffffff; --ink:#1d1726; --muted:#6c6276; --line:#e4dde9;
-  --accent:#c2185b; --accent-soft:#fbe4ee; --hot:#c2185b; --rise:#b45309; --rise-soft:#fdf0dc;
-  --season:#2e7d5b; --season-soft:#e2f3ea; --ok:#2e7d5b; --warn:#9a3412;
-  --f-display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --bg:#f2f6f1; --surface:#ffffff; --ink:#15281e; --muted:#5a6e61; --line:#d8e4da;
+  --forest:#1f4d36; --leaf:#2f7a4f; --sage:#8fb59a; --mint:#e2efe5; --linen:#ece2d4;
+  --band:#1f4d36; --band-ink:#f2f6f1; --row-alt:#f7faf6; --warn:#9a5a12;
+  --f-display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
   --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#15111b; --surface:#1f1927; --ink:#f1ecf5; --muted:#a79cb2; --line:#342b3f;
-  --accent:#f06292; --accent-soft:#3a1d2b; --hot:#f06292; --rise:#f2a65a; --rise-soft:#3a2a17;
-  --season:#6fcf9f; --season-soft:#173027; --ok:#6fcf9f; --warn:#f2a65a; color-scheme:dark}}
+  --bg:#0e1913; --surface:#14231a; --ink:#e6f0e8; --muted:#9bb2a3; --line:#25382c;
+  --forest:#a8d8b8; --leaf:#7cc79a; --sage:#4f7a5e; --mint:#1b3325; --linen:#2a2a22;
+  --band:#1c3a29; --band-ink:#e6f0e8; --row-alt:#112019; --warn:#e8b06a; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#15111b; --surface:#1f1927; --ink:#f1ecf5; --muted:#a79cb2; --line:#342b3f;
-  --accent:#f06292; --accent-soft:#3a1d2b; --hot:#f06292; --rise:#f2a65a; --rise-soft:#3a2a17;
-  --season:#6fcf9f; --season-soft:#173027; --ok:#6fcf9f; --warn:#f2a65a; color-scheme:dark}
+  --bg:#0e1913; --surface:#14231a; --ink:#e6f0e8; --muted:#9bb2a3; --line:#25382c;
+  --forest:#a8d8b8; --leaf:#7cc79a; --sage:#4f7a5e; --mint:#1b3325; --linen:#2a2a22;
+  --band:#1c3a29; --band-ink:#e6f0e8; --row-alt:#112019; --warn:#e8b06a; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:0 48px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:0 56px}
 .wrap{max-width:1180px;margin:0 auto}
-a{color:var(--accent)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a{color:var(--leaf)}
+:focus-visible{outline:2px solid var(--leaf);outline-offset:2px}
 
-header{padding-block:36px 20px;display:grid;gap:18px}
-.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 16px}
-.eyebrow b{color:var(--accent);font-weight:500}
-h1{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,5vw,48px);line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
-h1 span{color:var(--accent)}
-.lede{max-width:64ch;margin:0;color:var(--muted);font-size:16px}
-.stats{display:flex;flex-wrap:wrap;gap:10px}
-.stat{display:flex;align-items:baseline;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px}
-.stat b{font-family:var(--f-display);font-size:16px;font-variant-numeric:tabular-nums}
-.stat small{color:var(--muted);font-size:13px}
-.note{max-width:64ch;font-size:14px;background:var(--season-soft);color:var(--ink);border-radius:10px;padding:10px 14px;margin:0}
-.note b{color:var(--season)}
+/* Capa */
+.hero{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:40px 36px}
+.photo{position:relative;max-width:100%}
+.photo img{display:block;width:100%;aspect-ratio:760/1088;object-fit:cover;border-radius:999px 999px 24px 24px;background:var(--mint)}
+.photo::after{content:"";position:absolute;inset:-10px -10px 14px 14px;border:1.5px solid var(--sage);border-radius:999px 999px 28px 28px;z-index:-1}
+.hello{display:grid;gap:16px;min-width:0}
+.week{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf)}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,6.4vw,76px);line-height:.95;letter-spacing:-.02em;margin:0;color:var(--forest);text-wrap:balance}
+h1 em{font-style:normal;color:var(--leaf)}
+.small{margin:0;font-size:14px;color:var(--muted);max-width:46ch}
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;justify-items:center;text-align:center;padding-top:28px}
+  .photo{width:min(260px,70vw)}
+  .small{margin-inline:auto}
+}
 
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.search{flex:1 1 220px;min-width:0;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px}
-.count{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+/* Filtros */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--band);border-color:var(--band);color:var(--band-ink)}
+.search{flex:1 1 200px;min-width:0;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px}
+.count{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;padding-top:18px}
-@media (max-width:420px){.grid{grid-template-columns:1fr}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-.ref{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
-.heat{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;white-space:nowrap}
-.heat.alta{background:var(--accent-soft);color:var(--hot)}
-.heat.subindo{background:var(--rise-soft);color:var(--rise)}
-.heat.sazonal{background:var(--season-soft);color:var(--season)}
-h2{font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.2;margin:0;text-wrap:balance}
-.orig{font-size:13px;color:var(--muted);margin-top:2px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--muted)}
-.card p{margin:0}
-.lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-ol.steps{margin:0;padding-left:20px;display:grid;gap:3px}
-.niches{display:grid;gap:6px}
-.niche{font-size:14px;border-left:2px solid var(--line);padding-left:10px}
-.niche b{font-weight:700}
-.audio{font-size:13px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
-.audio .biz{font-weight:700}
-.biz.sim{color:var(--ok)} .biz.nao{color:var(--warn)} .biz.livre{color:var(--muted)}
-.refs{display:flex;flex-direction:column;gap:4px;font-size:13px;border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
-.refs a{overflow-wrap:anywhere}
-.actions{display:flex;gap:8px;flex-wrap:wrap}
-.btn{font:inherit;font-size:13px;font-weight:600;border-radius:8px;padding:6px 12px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink)}
-.btn.save[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-.empty{padding:40px 0;color:var(--muted);text-align:center}
-footer{margin-top:36px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:14px;display:grid;gap:10px;max-width:72ch}
-footer h3{font-family:var(--f-display);font-weight:500;font-size:15px;color:var(--ink);margin:0}
-footer ul{margin:0;padding-left:18px}
-@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}.card:hover{border-color:var(--accent)}}
+/* Tabela */
+.table-box{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--band);color:var(--band-ink);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:14px 18px}
+tbody tr{border-top:1px solid var(--line)}
+tbody tr:nth-child(even){background:var(--row-alt)}
+td{padding:18px;vertical-align:top}
+.c-fmt{width:26%}.c-ref{width:150px}.c-ig{width:210px}
+.n{font-size:12px;font-weight:700;color:var(--sage);font-variant-numeric:tabular-nums}
+.name{font-family:var(--f-display);font-weight:600;font-size:18px;line-height:1.15;margin:2px 0 2px;color:var(--forest);text-wrap:balance}
+.orig{font-size:12.5px;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.pill{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--mint);color:var(--forest)}
+.pill.alta{background:var(--leaf);color:var(--surface)}
+.pill.sazonal{background:var(--linen);color:var(--ink)}
+.audio{font-size:12.5px;color:var(--muted);margin-top:10px}
+.audio b{color:var(--ink);font-weight:600}
+.audio .nao{color:var(--warn)}
+
+.thumb{width:112px;max-width:100%;aspect-ratio:9/16;border-radius:14px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px;color:#fff;text-align:center;box-shadow:0 6px 18px -10px rgba(20,50,30,.6)}
+.thumb .t1{font-size:9.5px;font-weight:600;opacity:.9;line-height:1.2}
+.thumb .t2{font-family:var(--f-display);font-weight:800;font-size:15px;line-height:1.05;text-wrap:balance}
+.thumb .flip{display:inline-block;transform:rotate(180deg)}
+.thumb .bar-ig{position:absolute;left:10px;right:10px;bottom:10px;height:3px;border-radius:2px;background:rgba(255,255,255,.35)}
+.thumb .bar-ig::before{content:"";position:absolute;inset:0 45% 0 0;background:#fff;border-radius:2px}
+.thumb .kind{position:absolute;top:8px;left:8px;font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.thumb.carrossel .bar-ig{display:none}
+.thumb .dots{position:absolute;bottom:9px;left:0;right:0;display:flex;justify-content:center;gap:3px}
+.thumb .dots i{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+.thumb .dots i:first-child{background:#fff}
+.cap{font-size:11px;color:var(--muted);margin-top:6px}
+
+.resumo{margin:0 0 10px}
+.ideas{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.ideas li{font-size:14px;padding:7px 10px;border-radius:10px;background:var(--mint)}
+.ideas b{color:var(--forest)}
+details{margin-top:10px;font-size:14px}
+summary{cursor:pointer;font-weight:600;color:var(--leaf)}
+details ol{margin:6px 0 0;padding-left:20px}
+
+.ig{display:inline-flex;white-space:nowrap;align-items:center;gap:6px;font-weight:700;font-size:13.5px;text-decoration:none;background:var(--band);color:var(--band-ink);border-radius:999px;padding:9px 14px}
+.ig svg{width:15px;height:15px}
+.src{display:grid;gap:3px;margin-top:12px;font-size:12px}
+.src span{color:var(--muted)}
+.src a{overflow-wrap:anywhere}
+.empty{padding:36px;text-align:center;color:var(--muted)}
+
+@media (max-width:760px){
+  .table-box{background:transparent;border:0;border-radius:0}
+  thead{display:none}
+  table,tbody{display:block}
+  tbody{display:grid;gap:14px}
+  tbody tr,tbody tr:nth-child(even){display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+  td{display:block;padding:0;width:auto!important;min-width:0}
+  td.c-ref{grid-column:1;grid-row:1}
+  td.c-fmt{grid-column:2;grid-row:1}
+  td.c-ad,td.c-ig{grid-column:1/-1;padding-top:12px}
+  .thumb{width:96px}
+  .cap{display:none}
+}
+
+footer{margin-top:32px;color:var(--muted);font-size:13.5px;display:grid;gap:8px;max-width:72ch}
+footer b{color:var(--ink)}
 </style>
 
 <div class="wrap">
-<header>
-  <div class="eyebrow"><span><b>Semana 41</b> · 5 a 11 de outubro de 2026</span><span>Atualizado em 08/10</span></div>
-  <h1>30 formatos em alta <span>pra adaptar ao seu nicho</span></h1>
-  <p class="lede">Os formatos e trends que estão rodando no Instagram nesta semana. Cada cartão mostra como gravar, três exemplos de adaptação, o áudio da vez e de onde veio a referência. Salve os que você quer fazer e eles ficam marcados aqui no seu navegador.</p>
-  <div class="stats" id="stats"></div>
-  <p class="note"><b>Aqui é primavera.</b> Várias trends lá fora são de outono ("fall"). Onde aparecer estação, troque por primavera, pelo mês ou pelo momento do seu nicho.</p>
-</header>
+<section class="hero">
+  <div class="photo"><img src="assets/foto-perfil.jpg" alt="Foto da criadora escrevendo num caderno, com plantas ao fundo"></div>
+  <div class="hello">
+    <span class="week">Semana 41 · 5 a 11 de outubro</span>
+    <h1>Bem vinda ao meu <em>banco de ideias!</em></h1>
+    <p class="small">Aqui estão os formatos e trends dessa semana (atualizado em 08/10/2026). Só adaptar pro teu nicho :)</p>
+  </div>
+</section>
 
 <div class="bar" role="toolbar" aria-label="Filtros">
-  <div class="chips" id="tipo"></div>
-  <div class="chips" id="extra"></div>
-  <input class="search" id="q" type="search" placeholder="Buscar: carrossel, humor, antes e depois…" aria-label="Buscar formato">
+  <span id="chips"></span>
+  <input class="search" id="q" type="search" placeholder="Buscar formato…" aria-label="Buscar formato">
   <span class="count" id="count"></span>
 </div>
 
-<main class="grid" id="grid"></main>
+<div class="table-box">
+<table>
+  <thead><tr><th class="c-fmt">Formato</th><th class="c-ref">Referência</th><th class="c-ad">Como adaptar</th><th class="c-ig">Instagram</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+</div>
 
 <footer>
-  <h3>Sobre as referências</h3>
-  <p>Cada formato traz o relatório semanal que registrou a trend com os posts de exemplo (Later, New Engen, Ramdam, SocialPilot e outros), com a data da atualização. O link "Ver posts no Instagram" abre a busca do próprio app com o termo ou o áudio da trend, pra você ver os vídeos mais recentes.</p>
-  <h3>Antes de postar</h3>
-  <ul>
-    <li>Confira no app se o áudio está liberado pra sua conta. Contas comerciais não têm acesso a músicas licenciadas. Quando estiver bloqueado, use áudio original ou um som com o mesmo clima.</li>
-    <li>Trend boa é trend rápida. Grave enquanto ela está subindo, não quando todo mundo já fez.</li>
-    <li>O formato é o esqueleto. O conteúdo, a opinião e o jeito de falar são seus.</li>
-  </ul>
+  <p><b>Sobre as referências:</b> as capas são ilustrações do formato. O botão "Ver no Instagram" abre a busca do app com os posts da trend, e a fonte é o relatório semanal que registrou a tendência.</p>
+  <p><b>Áudio:</b> se a música não aparecer pra você, sua conta é comercial. Use áudio original ou um som com o mesmo clima.</p>
 </footer>
 </div>
 
@@ -282,84 +314,84 @@ const F = [
  audio:["Please Keep Me in Your Thoughts (original)",true],fontes:["sp","nu"],busca:"please keep me in your thoughts"}
 ];
 
+// Capa ilustrativa de cada formato: [linha pequena, texto grande]
+const CAPA = {
+  "upside-down":["transição de mãos","<span class=flip>ANTES</span> DEPOIS"],
+  "grwm-loading":["me arrumando","0% → 100%"],
+  "getting-robbed":["eu sendo assaltada enquanto…","lia o último capítulo"],
+  "reaction-if":["minha reação se…","contasse caloria do alface"],
+  "reaction-numbers":["minha reação a","10 → 1.000 alunas"],
+  "message-from-a":["Mensagem de A…","27 abas abertas de novo? -A"],
+  "ramalama":["taking a picture…","A REVELAÇÃO"],
+  "patient-zero":["o grande dia","VOLTA DA VITÓRIA"],
+  "the-process":["the process","rascunho → arte final"],
+  "vlog-timestamps":["07:00 · 09:30 · 12:00","MEU DIA"],
+  "quero-mais":["nessa primavera","EU QUERO MAIS…"],
+  "aholic":["oficialmente","PRIMAVERA­HOLIC"],
+  "ghosting-working":["sumi porque","TÔ TRABALHANDO"],
+  "where-are-you":["cadê você?","EM CASA"],
+  "wore-went-did":["vesti · fui · fiz","3 TELAS"],
+  "some-people-call-me":["algumas pessoas me chamam de…","A MOÇA DA SOBRANCELHA"],
+  "mum-into-me":["transformei minha","MÃE EM MIM"],
+  "one-question":["me defina em","UMA PALAVRA"],
+  "rock-paper-scissors":["pedra · papel · tesoura","PROBLEMA VS. SOLUÇÃO"],
+  "thats-so-you":["colagem","ISSO É TÃO VOCÊ"],
+  "this-is-your-sign":["esse é o seu","SINAL"],
+  "things-i-know-at":["coisas que eu sei","AOS 34"],
+  "red-card":["merece","CARTÃO VERMELHO"],
+  "said-out-loud":["coisas que já falei","EM VOZ ALTA"],
+  "unfortunately-love":["infelizmente","EU AMO…"],
+  "gold-star":["pequenas vitórias","★ ESTRELINHA"],
+  "grr-mondays":["#grrmondays","SEGUNDA: GRR"],
+  "problem-first":["primeiro o problema","DEPOIS A SOLUÇÃO"],
+  "recurring-character":["episódio 12","A CLIENTE INDECISA"],
+  "keep-me-in-thoughts":["só lembrando que","TEM HORÁRIO SEXTA"]
+};
+const GREENS = [["#1f4d36","#4f8a64"],["#2f6b4a","#9cc3a6"],["#14402c","#2f7a4f"],["#3e6b4f","#b9cfa9"],["#24563d","#6aa37c"],["#0f3524","#5f8f6d"]];
 const heatTxt = {alta:"Em alta",subindo:"Subindo",sazonal:"Sazonal"};
-const LS = "radar-s41-salvos";
-let saved = new Set();
-try { saved = new Set(JSON.parse(localStorage.getItem(LS) || "[]")); } catch(e) {}
-const persist = () => { try { localStorage.setItem(LS, JSON.stringify([...saved])); } catch(e) {} };
-const state = {tipo:"Todos", facil:false, semLicenca:false, salvos:false, q:""};
+const state = {tipo:"Todos", q:""};
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const igSearch = q => "https://www.instagram.com/explore/search/keyword/?q=" + encodeURIComponent(q);
+const IG_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
 
-function stats(){
-  const n = t => F.filter(f => f.tipo.includes(t)).length;
-  const livre = F.filter(f => f.audio[1] !== false).length;
-  document.getElementById("stats").innerHTML =
-    [["30","formatos"],[n("Reels"),"de Reels"],[n("Carrossel"),"de carrossel"],[livre,"sem depender de música licenciada"]]
-    .map(([b,s]) => `<span class="stat"><b>${b}</b><small>${s}</small></span>`).join("");
+function thumb(f, i){
+  const [a,b] = GREENS[i % GREENS.length], c = CAPA[f.id] || ["",f.nome];
+  const car = f.tipo[0] === "Carrossel";
+  return `<div class="thumb ${car ? "carrossel" : ""}" style="background:linear-gradient(160deg,${a},${b})" role="img" aria-label="Ilustração do formato ${esc(f.nome)}">
+    <span class="kind">${car ? "Carrossel" : f.tipo[0]}</span>
+    <span class="t1">${esc(c[0])}</span><span class="t2">${c[1]}</span>
+    ${car ? '<span class="dots"><i></i><i></i><i></i><i></i></span>' : '<span class="bar-ig"></span>'}
+  </div><div class="cap">ilustração</div>`;
+}
+
+function row(f){
+  const i = F.indexOf(f);
+  const aud = f.audio[1] === false ? `<span class="nao">só conta criadora</span>` : f.audio[1] === true ? "liberado p/ conta comercial" : "";
+  return `<tr id="${f.id}">
+    <td class="c-fmt"><div class="n">${String(i+1).padStart(2,"0")}</div>
+      <div class="name">${esc(f.nome)}</div><div class="orig">${esc(f.orig)}</div>
+      <div class="pills"><span class="pill ${f.calor}">${heatTxt[f.calor]}</span>${f.tipo.map(t=>`<span class="pill">${t}</span>`).join("")}<span class="pill">${f.nivel}</span></div>
+      <div class="audio"><b>Áudio:</b> ${esc(f.audio[0])}${aud ? " · " + aud : ""}</div></td>
+    <td class="c-ref">${thumb(f,i)}</td>
+    <td class="c-ad"><p class="resumo">${esc(f.resumo)}</p>
+      <ul class="ideas">${f.nichos.map(([n,e])=>`<li><b>${esc(n)}:</b> ${esc(e)}</li>`).join("")}</ul>
+      <details><summary>Como gravar</summary><ol>${f.passos.map(p=>`<li>${esc(p)}</li>`).join("")}</ol></details></td>
+    <td class="c-ig"><a class="ig" href="${igSearch(f.busca)}" target="_blank" rel="noopener">${IG_ICON} Ver no Instagram</a>
+      <div class="src"><span>Fonte:</span>${f.fontes.map(k=>`<a href="${S[k].u}" target="_blank" rel="noopener">${esc(S[k].n)}</a>`).join("")}</div></td>
+  </tr>`;
 }
 
 function chips(){
-  const tipo = document.getElementById("tipo");
-  tipo.innerHTML = ["Todos","Reels","Carrossel","Foto"].map(t =>
-    `<button class="chip" data-tipo="${t}" aria-pressed="${state.tipo===t}">${t}</button>`).join("");
-  const extra = document.getElementById("extra");
-  extra.innerHTML = [["facil","Só fáceis"],["semLicenca","Serve pra conta comercial"],["salvos","Meus salvos"]].map(([k,l]) =>
-    `<button class="chip" data-k="${k}" aria-pressed="${state[k]}">${l}</button>`).join("");
+  document.getElementById("chips").innerHTML = ["Todos","Reels","Carrossel","Foto"].map(t =>
+    `<button class="chip" data-tipo="${t}" aria-pressed="${state.tipo===t}">${t}</button>`).join(" ");
 }
-
-function bizLabel(v){
-  if (v === true) return '<span class="biz sim">Liberado p/ conta comercial</span>';
-  if (v === false) return '<span class="biz nao">Só conta criadora. Na comercial, use áudio original</span>';
-  return '<span class="biz livre">Áudio original ou à sua escolha</span>';
-}
-
-function card(f){
-  const fontes = f.fontes.map(k => `<a href="${S[k].u}" target="_blank" rel="noopener">${esc(S[k].n)}</a>`).join("");
-  return `<article class="card" id="${f.id}">
-    <div class="card-top"><span class="ref">${f.tipo.join(" · ")} · ${f.nivel}</span><span class="heat ${f.calor}">${heatTxt[f.calor]}</span></div>
-    <div><h2>${esc(f.nome)}</h2><div class="orig">Nome lá fora: ${esc(f.orig)}</div></div>
-    <p>${esc(f.resumo)}</p>
-    <div><div class="lbl">Como gravar</div><ol class="steps">${f.passos.map(p=>`<li>${esc(p)}</li>`).join("")}</ol></div>
-    <div><div class="lbl">Adapte pro seu nicho</div><div class="niches">${f.nichos.map(([n,e])=>`<div class="niche"><b>${esc(n)}:</b> ${esc(e)}</div>`).join("")}</div></div>
-    <div class="audio"><span><b>Áudio:</b> ${esc(f.audio[0])}</span>${bizLabel(f.audio[1])}</div>
-    <div class="refs"><div class="lbl">Referência</div>${fontes}<a href="${igSearch(f.busca)}" target="_blank" rel="noopener">Ver posts no Instagram ↗</a></div>
-    <div class="actions">
-      <button class="btn save" data-save="${f.id}" aria-pressed="${saved.has(f.id)}">${saved.has(f.id) ? "Salvo" : "Quero fazer"}</button>
-      <button class="btn" data-copy="${f.id}">Copiar roteiro</button>
-    </div>
-  </article>`;
-}
-
 function render(){
   const q = state.q.trim().toLowerCase();
-  const list = F.filter(f =>
-    (state.tipo === "Todos" || f.tipo.includes(state.tipo)) &&
-    (!state.facil || f.nivel === "Fácil") &&
-    (!state.semLicenca || f.audio[1] !== false) &&
-    (!state.salvos || saved.has(f.id)) &&
-    (!q || JSON.stringify(f).toLowerCase().includes(q)));
-  document.getElementById("grid").innerHTML = list.length ? list.map(card).join("")
-    : `<p class="empty">${state.salvos ? "Você ainda não salvou nenhum formato. Toque em \"Quero fazer\" num cartão." : "Nenhum formato com esses filtros."}</p>`;
+  const list = F.filter(f => (state.tipo==="Todos" || f.tipo.includes(state.tipo)) && (!q || JSON.stringify(f).toLowerCase().includes(q)));
+  document.getElementById("rows").innerHTML = list.length ? list.map(row).join("") : `<tr><td colspan="4" class="empty">Nenhum formato com esse filtro.</td></tr>`;
   document.getElementById("count").textContent = `${list.length} de ${F.length}`;
 }
-
-function roteiro(f){
-  return `${f.nome} (${f.orig})\n${f.resumo}\n\nComo gravar:\n${f.passos.map((p,i)=>`${i+1}. ${p}`).join("\n")}\n\nÁudio: ${f.audio[0]}\nReferência: ${f.fontes.map(k=>S[k].u).join(" | ")}`;
-}
-
-document.addEventListener("click", e => {
-  const b = e.target.closest("button"); if (!b) return;
-  if (b.dataset.tipo) { state.tipo = b.dataset.tipo; chips(); render(); }
-  else if (b.dataset.k) { state[b.dataset.k] = !state[b.dataset.k]; chips(); render(); }
-  else if (b.dataset.save) { const id=b.dataset.save; saved.has(id)?saved.delete(id):saved.add(id); persist(); render(); }
-  else if (b.dataset.copy) {
-    const f = F.find(x => x.id === b.dataset.copy), txt = roteiro(f);
-    const done = () => { b.textContent = "Copiado"; setTimeout(()=>b.textContent="Copiar roteiro",1600); };
-    try { navigator.clipboard.writeText(txt).then(done, () => { b.textContent = "Não deu pra copiar"; }); }
-    catch(err) { b.textContent = "Não deu pra copiar"; }
-  }
-});
+document.addEventListener("click", e => { const b = e.target.closest("[data-tipo]"); if (b) { state.tipo = b.dataset.tipo; chips(); render(); } });
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
-stats(); chips(); render();
+chips(); render();
 </script>
