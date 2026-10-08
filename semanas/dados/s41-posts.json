@@ -282,5 +282,40 @@
         "A de algoritmo, B de branding, C de conversão"
       ]
     ]
+  },
+  {
+    "n": 9,
+    "id": "coisas-que-gostaria",
+    "nome": "Coisas que eu gostaria que você soubesse",
+    "orig": "Carrossel 'versão [tema]'",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DeCcJGsETlX/",
+    "perfil": "@biancaminuzzi.dermato",
+    "img": "assets/refs/09-a.jpg",
+    "audio": "",
+    "numeros": "94 curtidas · 5 reposts",
+    "resumo": "Carrossel de 8 fotos. A capa é um retrato profissional com 'Coisas que eu gostaria que você soubesse' e uma etiqueta 'versão cabelos'. Cada slide traz uma verdade da profissão que o público não sabe. A etiqueta 'versão…' deixa virar série.",
+    "passos": [
+      "Capa: retrato seu + 'Coisas que eu gostaria que você soubesse' + etiqueta 'versão [tema]'",
+      "6 slides, cada um com uma verdade curta da sua área",
+      "Repita com outras versões nas próximas semanas"
+    ],
+    "nichos": [
+      [
+        "Dentista",
+        "versão clareamento"
+      ],
+      [
+        "Personal",
+        "versão emagrecimento"
+      ],
+      [
+        "Advogada",
+        "versão divórcio"
+      ]
+    ]
   }
 ]
