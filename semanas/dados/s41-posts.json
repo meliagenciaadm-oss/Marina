@@ -458,5 +458,41 @@
         "'Seguidor não paga boleto' sobre um cupcake"
       ]
     ]
+  },
+  {
+    "n": 14,
+    "id": "derrotas-da-semana",
+    "nome": "Derrotas da semana",
+    "orig": "Week's losses dump",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DdeA9wRHPiJ/",
+    "perfil": "",
+    "img": "assets/refs/14-a.jpg",
+    "img2": "assets/refs/14-b.jpg",
+    "audio": "",
+    "numeros": "2.094 curtidas · 26 comentários",
+    "resumo": "Carrossel de 10 fotos no estilo do app Notas ('< Notas' no topo). A capa é uma selfie tomando café com 'derrotas da semana', com 'semana' em letra cursiva. Os slides mostram fotos reais do dia a dia com textos sinceros e bem-humorados sobre o que deu errado.",
+    "passos": [
+      "Capa: selfie espontânea + 'derrotas da semana' + o '< Notas' do iPhone no topo",
+      "Slides: fotos reais da semana com um texto curto e honesto sobre o que deu errado",
+      "Termine com uma vitória pequena ou uma reflexão leve"
+    ],
+    "nichos": [
+      [
+        "Empreendedora",
+        "'o cliente sumiu depois do orçamento'"
+      ],
+      [
+        "Mãe",
+        "'o almoço queimou enquanto eu respondia e-mail'"
+      ],
+      [
+        "Fitness",
+        "'faltei 2 treinos e comi brigadeiro de panela'"
+      ]
+    ]
   }
 ]
