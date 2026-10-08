@@ -176,5 +176,40 @@
         "minha história, meus ensaios favoritos e como agendar"
       ]
     ]
+  },
+  {
+    "n": 6,
+    "id": "onde-fui-vesti-comi",
+    "nome": "Onde fui, o que vesti, o que comi",
+    "orig": "Split screen em 3 faixas",
+    "tipo": [
+      "Reels"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/reel/Dd_u57wxSLK/",
+    "perfil": "@brenda_maress",
+    "img": "assets/refs/06-a.jpg",
+    "audio": "Modelo pronto no Instagram (botão 'Usar modelo')",
+    "numeros": "1.583 curtidas · 1.403 salvamentos · 815 envios",
+    "resumo": "Reels com a tela dividida em 3 faixas, cada uma com um vídeo e um título em letra serifada: 'onde fui', 'o que vesti', 'o que comi'. Faz parte de uma série ('turistando em BH'). Tem modelo pronto no Instagram.",
+    "passos": [
+      "Grave 3 clipes curtos: o lugar, o seu look e a comida",
+      "Toque em 'Usar modelo' no Reels de referência e encaixe seus clipes",
+      "Na legenda, conte o lugar e transforme em série"
+    ],
+    "nichos": [
+      [
+        "Corretora",
+        "onde fui (o imóvel), o que vi (a vista), o que amei (o detalhe)"
+      ],
+      [
+        "Confeitaria",
+        "o pedido, a decoração, o resultado"
+      ],
+      [
+        "Personal",
+        "onde treinei, o que vesti, o que comi depois"
+      ]
+    ]
   }
 ]
