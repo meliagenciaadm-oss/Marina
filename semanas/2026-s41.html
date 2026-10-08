@@ -78,6 +78,8 @@ td{padding:18px;vertical-align:top}
 .thumb .dots{position:absolute;bottom:9px;left:0;right:0;display:flex;justify-content:center;gap:3px}
 .thumb .dots i{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
 .thumb .dots i:first-child{background:#fff}
+.thumb.real{display:block;padding:0;object-fit:cover;background:var(--mint)}
+.more{display:block;font-size:12.5px;margin-top:8px}
 .cap{font-size:11px;color:var(--muted);margin-top:6px}
 
 .resumo{margin:0 0 10px}
@@ -314,6 +316,8 @@ const F = [
  audio:["Please Keep Me in Your Thoughts (original)",true],fontes:["sp","nu"],busca:"please keep me in your thoughts"}
 ];
 
+// Post real: adicione em cada formato post (link do post), img (assets/ref-<id>.jpg) e perfil (@usuario).
+// Sem isso, a página mostra a capa ilustrativa e a busca do Instagram.
 // Capa ilustrativa de cada formato: [linha pequena, texto grande]
 const CAPA = {
   "upside-down":["transição de mãos","<span class=flip>ANTES</span> DEPOIS"],
@@ -355,6 +359,7 @@ const igSearch = q => "https://www.instagram.com/explore/search/keyword/?q=" + e
 const IG_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
 
 function thumb(f, i){
+  if (f.img) return `<a href="${f.post || igSearch(f.busca)}" target="_blank" rel="noopener"><img class="thumb real" src="${esc(f.img)}" alt="Post de referência: ${esc(f.nome)}" loading="lazy"></a><div class="cap">${f.perfil ? esc(f.perfil) : "post real"}</div>`;
   const [a,b] = GREENS[i % GREENS.length], c = CAPA[f.id] || ["",f.nome];
   const car = f.tipo[0] === "Carrossel";
   return `<div class="thumb ${car ? "carrossel" : ""}" style="background:linear-gradient(160deg,${a},${b})" role="img" aria-label="Ilustração do formato ${esc(f.nome)}">
@@ -376,7 +381,7 @@ function row(f){
     <td class="c-ad"><p class="resumo">${esc(f.resumo)}</p>
       <ul class="ideas">${f.nichos.map(([n,e])=>`<li><b>${esc(n)}:</b> ${esc(e)}</li>`).join("")}</ul>
       <details><summary>Como gravar</summary><ol>${f.passos.map(p=>`<li>${esc(p)}</li>`).join("")}</ol></details></td>
-    <td class="c-ig"><a class="ig" href="${igSearch(f.busca)}" target="_blank" rel="noopener">${IG_ICON} Ver no Instagram</a>
+    <td class="c-ig"><a class="ig" href="${f.post || igSearch(f.busca)}" target="_blank" rel="noopener">${IG_ICON} ${f.post ? "Ver post" : "Ver no Instagram"}</a>${f.post ? `<a class="more" href="${igSearch(f.busca)}" target="_blank" rel="noopener">Mais posts da trend</a>` : ""}
       <div class="src"><span>Fonte:</span>${f.fontes.map(k=>`<a href="${S[k].u}" target="_blank" rel="noopener">${esc(S[k].n)}</a>`).join("")}</div></td>
   </tr>`;
 }
