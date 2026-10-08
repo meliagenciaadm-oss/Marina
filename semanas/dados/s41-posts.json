@@ -566,5 +566,40 @@
         "'Protetor solar até pra ir na geladeira'"
       ]
     ]
+  },
+  {
+    "n": 17,
+    "id": "desfazendo-lavagem-cerebral",
+    "nome": "Desfazendo a lavagem cerebral que fizeram em você",
+    "orig": "Quebrando crenças do nicho",
+    "tipo": [
+      "Carrossel"
+    ],
+    "nivel": "Fácil",
+    "post": "https://www.instagram.com/p/DeKDnrygcvU/",
+    "perfil": "Mari Brentano",
+    "img": "assets/refs/17-a.jpg",
+    "audio": "",
+    "numeros": "4 reposts · 2 comentários",
+    "resumo": "Carrossel de 7 fotos. A capa é uma selfie de rosto com o fundo escurecido e 'Desfazendo a lavagem cerebral que fizeram em você' em letras amarelas, com o nome dela embaixo no estilo da barra do app Notas. Cada slide derruba uma crença comum do nicho.",
+    "passos": [
+      "Capa: selfie com o fundo escurecido + 'Desfazendo a lavagem cerebral que fizeram em você' + seu nome embaixo",
+      "Um slide por crença: o que te disseram e a verdade",
+      "Último slide: 'qual crença você ainda carrega?'"
+    ],
+    "nichos": [
+      [
+        "Nutricionista",
+        "'te disseram que comer à noite engorda'"
+      ],
+      [
+        "Finanças",
+        "'te disseram que investir é só pra rico'"
+      ],
+      [
+        "Maternidade",
+        "'te disseram que mãe boa não pode cansar'"
+      ]
+    ]
   }
 ]
