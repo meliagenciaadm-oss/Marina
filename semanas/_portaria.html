@@ -43,28 +43,16 @@ body.trancado .wrap{filter:blur(6px);pointer-events:none;user-select:none}
 
 <script>
 (() => {
-  const CHAVE = "banco-ideias-acesso", SEMANA = "{{SEMANA}}";
+  // A caixinha aparece em toda visita: cada entrada vira um registro no formulário "acessos".
+  const SEMANA = "{{SEMANA}}";
   const portaria = document.getElementById("portaria"), form = document.getElementById("form-acesso");
-  const ler = () => { try { return JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch (e) { return null; } };
-  const gravar = v => { try { localStorage.setItem(CHAVE, JSON.stringify(v)); } catch (e) {} };
   const enviar = dados => fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({ "form-name": "acessos", semana: SEMANA, ...dados }).toString() });
   const abrir = () => { document.body.classList.remove("trancado"); portaria.hidden = true; };
 
-  const salvo = ler();
-  if (salvo && salvo.instagram) {
-    abrir();
-    // Já entrou antes neste aparelho: registra o acesso desta semana sem pedir de novo.
-    if (!(salvo.semanas || []).includes(SEMANA)) {
-      enviar({ nome: salvo.nome, instagram: salvo.instagram }).then(r => {
-        if (r.ok) gravar({ ...salvo, semanas: [...(salvo.semanas || []), SEMANA] });
-      }).catch(() => {});
-    }
-  } else {
-    document.body.classList.add("trancado");
-    portaria.hidden = false;
-    document.getElementById("ac-nome").focus();
-  }
+  document.body.classList.add("trancado");
+  portaria.hidden = false;
+  document.getElementById("ac-nome").focus();
 
   form.addEventListener("submit", e => {
     e.preventDefault();
@@ -72,7 +60,7 @@ body.trancado .wrap{filter:blur(6px);pointer-events:none;user-select:none}
     const nome = form.nome.value.trim(), instagram = "@" + form.instagram.value.trim().replace(/^@+/, "").toLowerCase();
     btn.disabled = true; btn.textContent = "Entrando…"; erro.textContent = "";
     enviar({ nome, instagram, "bot-field": form["bot-field"].value })
-      .then(r => { if (!r.ok) throw new Error(); gravar({ nome, instagram, semanas: [SEMANA] }); abrir(); })
+      .then(r => { if (!r.ok) throw new Error(); abrir(); })
       .catch(() => { erro.textContent = "Não deu pra entrar agora. Confere a internet e tenta de novo."; })
       .finally(() => { btn.disabled = false; btn.textContent = "Entrar"; });
   });

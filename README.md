@@ -28,4 +28,4 @@ O visual fica em `semanas/_modelo.html` e a caixinha de entrada em `semanas/_por
 
 O site é publicado a partir da pasta `site/` (veja `netlify.toml`).
 Cada pessoa que entra deixa nome e @ do Instagram no formulário **acessos**, que aparece no painel do Netlify em **Forms**.
-Quem já entrou num aparelho não precisa preencher de novo, e o acesso de cada semana nova é registrado sozinho.
+A caixinha aparece em toda visita, então cada entrada vira um registro.
