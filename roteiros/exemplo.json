@@ -1,0 +1,20 @@
+{
+  "fundo": "white",
+  "cenas": [
+    {
+      "texto": "Eu achando que a Meredith finalmente ia ter um dia de paz",
+      "reacao": "clipes/cachorro.mp4"
+    },
+    {
+      "texto": "A Shonda Rhimes escrevendo o próximo episódio",
+      "reacao": "clipes/homem-rezando.mp4",
+      "inicio": 0.5,
+      "fim": 3
+    },
+    {
+      "texto": "Eu às 3 da manhã terminando o livro e descobrindo que tem continuação",
+      "reacao": "clipes/michael-scott.mp4",
+      "fundo": "#ffd1dc"
+    }
+  ]
+}
