@@ -4,9 +4,10 @@
 set -e
 cd "$(dirname "$0")"
 BG="${1:-}"; OUT="${2:-ranking_jogos_vorazes.mp4}"
-DUR=10            # duração total (s)
-START=0.8         # quando aparece o 6º
-STEP=1.1          # intervalo entre pôsteres
+DUR=${DUR:-10}         # duração total (s)
+START=${START:-0.8}    # quando aparece o 6º
+STEP=${STEP:-1.1}      # intervalo entre pôsteres
+DX=${DX:-0}; DY=${DY:-0}  # desloca o vídeo de fundo (px) pra liberar o rosto
 TITLE="meu ranking dos filmes de Jogos Vorazes:"
 F=/usr/share/fonts/opentype/inter/Inter-Bold.otf
 FN=/usr/share/fonts/opentype/inter/Inter-Black.otf
@@ -16,7 +17,7 @@ POS=("60 130 300 450" "390 130 300 450" "720 130 300 450" "60 700 300 370" "60 1
 printf '%s' "$TITLE" > /tmp/_title.txt
 if [ -n "$BG" ]; then
   IN=(-stream_loop -1 -i "$BG")
-  BGF="[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,trim=duration=$DUR,setpts=PTS-STARTPTS[bg]"
+  BGF="[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,trim=duration=$DUR,setpts=PTS-STARTPTS,split[s1][s2];[s1]scale=1350:2400,crop=1080:1920,boxblur=30:2,eq=brightness=-0.08[blur];[blur][s2]overlay=$DX:$DY[bg]"
 else
   IN=(-f lavfi -i "color=c=0x2a2522:s=1080x1920:d=$DUR")
   BGF="[0:v]drawtext=fontfile=$F:text='seu vídeo aqui':fontsize=60:fontcolor=white@0.35:x=600:y=1100,setsar=1[bg]"
