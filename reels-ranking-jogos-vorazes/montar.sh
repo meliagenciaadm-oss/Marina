@@ -9,7 +9,8 @@ START=${START:-0.8}    # quando aparece o 6º
 STEP=${STEP:-1.1}      # intervalo entre pôsteres
 DX=${DX:-0}; DY=${DY:-0}  # desloca o vídeo de fundo (px) pra liberar o rosto
 TITLE="meu ranking dos filmes de Jogos Vorazes:"
-F=/usr/share/fonts/opentype/inter/Inter-Bold.otf
+TITLE_COLOR=${TITLE_COLOR:-white}
+F=${FONT:-/usr/share/fonts/opentype/inter/Inter-Bold.otf}
 FN=/usr/share/fonts/opentype/inter/Inter-Black.otf
 P=(posters/1_*.jpg posters/2_*.jpg posters/3_*.jpg posters/4_*.jpg posters/5_*.jpg posters/6_*.jpg)
 # posições (x y w h) do 1º ao 6º
@@ -31,11 +32,11 @@ for i in 0 1 2 3 4 5; do
   FC+="[$idx:v]scale=$w:$h:force_original_aspect_ratio=increase,crop=$w:$h,
 drawbox=x=16:y=16:w=62:h=72:color=0xDCD3F2@0.95:t=fill,
 drawtext=fontfile=$FN:text='$n':fontsize=50:fontcolor=0x6A3D9A:x=16+(62-tw)/2:y=16+(72-th)/2,
-format=rgba,fade=in:st=$T:d=0.25:alpha=1[p$n];
+format=rgba$( [ "$STEP" = "0" ] || echo ",fade=in:st=$T:d=0.25:alpha=1")[p$n];
 [$last][p$n]overlay=$x:$y:enable='gte(t,$T)'[o$n];"
   last="o$n"
 done
-FC+="[$last]drawtext=fontfile=$F:textfile=/tmp/_title.txt:fontsize=46:fontcolor=white:shadowcolor=black@0.6:shadowx=2:shadowy=2:x=(w-tw)/2:y=615,format=yuv420p[v]"
+FC+="[$last]drawtext=fontfile=$F:textfile=/tmp/_title.txt:fontsize=46:fontcolor=$TITLE_COLOR:shadowcolor=black@0.6:shadowx=2:shadowy=2:x=(w-tw)/2:y=615,format=yuv420p[v]"
 AUD=(); [ -n "$BG" ] && AUD=(-map "0:a?" -c:a aac)
 ffmpeg -loglevel error -y "${IN[@]}" -filter_complex "$FC" -map "[v]" "${AUD[@]}" -t $DUR -r 30 -c:v libx264 -crf 20 -movflags +faststart "$OUT"
 echo "ok: $OUT"
