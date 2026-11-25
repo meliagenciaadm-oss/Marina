@@ -36,7 +36,7 @@ format=rgba$( [ "$STEP" = "0" ] || echo ",fade=in:st=$T:d=0.25:alpha=1")[p$n];
 [$last][p$n]overlay=$x:$y:enable='gte(t,$T)'[o$n];"
   last="o$n"
 done
-FC+="[$last]drawtext=fontfile=$F:textfile=/tmp/_title.txt:fontsize=46:fontcolor=$TITLE_COLOR:shadowcolor=black@0.6:shadowx=2:shadowy=2:x=(w-tw)/2:y=615,format=yuv420p[v]"
+FC+="[$last]drawtext=fontfile=$F:textfile=/tmp/_title.txt:fontsize=${TITLE_SIZE:-46}:fontcolor=$TITLE_COLOR:shadowcolor=black@0.6:shadowx=2:shadowy=2:x=(w-tw)/2:y=615,format=yuv420p[v]"
 AUD=(); [ -n "$BG" ] && AUD=(-map "0:a?" -c:a aac)
 ffmpeg -loglevel error -y "${IN[@]}" -filter_complex "$FC" -map "[v]" "${AUD[@]}" -t $DUR -r 30 -c:v libx264 -crf 20 -movflags +faststart "$OUT"
 echo "ok: $OUT"
