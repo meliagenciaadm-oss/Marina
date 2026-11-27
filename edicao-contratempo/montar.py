@@ -23,7 +23,9 @@ STRIP_IN, STRIP_OUT = 4.68, 28.70
 LEG_Y = FAIXA_Y + FAIXA_H + 22          # topo da legenda
 
 FONTS = "/usr/share/fonts/opentype/inter/"
-F_LEG = ImageFont.truetype(FONTS + "Inter-LightItalic.otf", 40)
+F_LEG = ImageFont.truetype(FONTS + "Inter-LightItalic.otf", 41)
+COR = (250, 233, 163, 255)      # amarelo manteiga
+TRACK_TIT, TRACK_LEG = -4.5, -1.6
 F_TIT = ImageFont.truetype(FONTS + "InterDisplay-Bold.otf", 76)
 F_SUB = ImageFont.truetype(FONTS + "InterDisplay-SemiBold.otf", 32)
 
@@ -90,10 +92,10 @@ def largura(txt, font, track=0):
 def escreve(draw, xy, txt, font, track=0):
     x, y = xy
     if track == 0:
-        draw.text((x, y), txt, font=font, fill=(255, 255, 255, 255))
+        draw.text((x, y), txt, font=font, fill=COR)
         return
     for ch in txt:
-        draw.text((x, y), ch, font=font, fill=(255, 255, 255, 255))
+        draw.text((x, y), ch, font=font, fill=COR)
         x += font.getlength(ch) + track
 
 
@@ -108,7 +110,7 @@ def com_sombra(layer, raio, opac):
     return out
 
 
-def bloco_grande(linhas_vis, linhas_full, y0, font, track=-2, entrelinha=0.98):
+def bloco_grande(linhas_vis, linhas_full, y0, font, track=TRACK_TIT, entrelinha=0.98):
     """Desenha linhas centradas pela largura final (efeito máquina de escrever sem tremer)."""
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
@@ -121,48 +123,76 @@ def bloco_grande(linhas_vis, linhas_full, y0, font, track=-2, entrelinha=0.98):
     return lay, y0 + len(linhas_full) * lh
 
 
-def legenda(txt):
+def legenda(txt, n):
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
-    x = (W - largura(txt, F_LEG)) / 2
-    escreve(d, (x, LEG_Y), txt, F_LEG)
+    x = (W - largura(txt, F_LEG, TRACK_LEG)) / 2
+    escreve(d, (x, LEG_Y), txt[:n], F_LEG, TRACK_LEG)
     return lay
 
 
+def digitados(texto_total, t, t0, dur):
+    """Quantos caracteres já apareceram (máquina de escrever)."""
+    if t < t0:
+        return 0
+    return min(len(texto_total), int((t - t0) / dur * len(texto_total)) + 1)
+
+
+def cortar(linhas, n):
+    vis = []
+    for l in linhas:
+        vis.append(l[:n]); n = max(0, n - len(l))
+    return vis
+
+
+F_CTA = ImageFont.truetype(FONTS + "InterDisplay-Bold.otf", 88)
+TIT_T0, TIT_DUR = 0.10, 1.9
+SUB_T0, SUB_DUR = 2.25, 0.55
 cache = {}
+CLIQUES = []          # (tempo, intensidade) para o som de teclado
+_vistos = {}
+
+
+def registra(chave, n, t, forca):
+    if n > _vistos.get(chave, 0):
+        for _ in range(n - _vistos.get(chave, 0)):
+            CLIQUES.append((t, forca))
+        _vistos[chave] = n
 
 
 def quadro(t):
-    # abertura: título digitando
     if t < STRIP_IN:
-        total = sum(len(l) for l in TITULO)
-        n = min(total, int(max(0, t - 0.10) / 1.9 * total))
-        vis, rest = [], n
-        for l in TITULO:
-            vis.append(l[:rest]); rest = max(0, rest - len(l))
-        key = ("tit", n, t >= 2.3)
+        n = digitados("".join(TITULO), t, TIT_T0, TIT_DUR)
+        m = digitados(TITULO_SUB, t, SUB_T0, SUB_DUR)
+        registra("tit", n, t, 1.0); registra("tsub", m, t, 0.7)
+        key = ("tit", n, m)
         if key not in cache:
-            lay, yfim = bloco_grande(vis, TITULO, TIT_Y, F_TIT)
-            if t >= 2.3:
+            lay, yfim = bloco_grande(cortar(TITULO, n), TITULO, TIT_Y, F_TIT)
+            if m:
                 d = ImageDraw.Draw(lay)
-                escreve(d, ((W - largura(TITULO_SUB, F_SUB)) / 2, yfim + 14), TITULO_SUB, F_SUB)
+                x = (W - largura(TITULO_SUB, F_SUB, -1.2)) / 2
+                escreve(d, (x, yfim + 14), TITULO_SUB[:m], F_SUB, -1.2)
             cache[key] = com_sombra(lay, 10, 0.55)
         return cache[key]
-    # final: chamada
     if t >= STRIP_OUT:
-        n = sum(1 for (t0, _) in CTA if t >= t0)
-        key = ("cta", n)
+        full = [c for _, c in CTA]
+        ns = [digitados(c, t, t0, 0.45) for (t0, c) in CTA]
+        for i, k in enumerate(ns):
+            registra(("cta", i), k, t, 1.0)
+        key = ("cta",) + tuple(ns)
         if key not in cache:
-            full = [c for _, c in CTA]
-            vis = [c if i < n else "" for i, c in enumerate(full)]
-            lay, _ = bloco_grande(vis, full, CTA_Y, ImageFont.truetype(FONTS + "InterDisplay-Bold.otf", 88))
+            vis = [c[:k] for c, k in zip(full, ns)]
+            lay, _ = bloco_grande(vis, full, CTA_Y, F_CTA)
             cache[key] = com_sombra(lay, 10, 0.55)
         return cache[key]
-    # meio: legenda
-    atual = [f for f in FRASES if f[0] <= t + 1e-6][-1]
-    key = ("leg", atual[1])
+    i = max(j for j, f in enumerate(FRASES) if f[0] <= t + 1e-6)
+    t0, txt, _ = FRASES[i]
+    t1 = FRASES[i + 1][0] if i + 1 < len(FRASES) else STRIP_OUT
+    n = digitados(txt, t, t0, min(0.35, (t1 - t0) * 0.4))
+    registra(("leg", i), n, t, 0.35)
+    key = ("leg", i, n)
     if key not in cache:
-        cache[key] = com_sombra(legenda(atual[1]), 5, 0.45)
+        cache[key] = com_sombra(legenda(txt, n), 5, 0.45)
     return cache[key]
 
 
@@ -176,17 +206,44 @@ for f in range(NFR):
         img.save(p, compress_level=1)
         ultimo, ultimo_path = img, p
 
+# ---------- 2b. som de teclado ----------
+import numpy as np, wave, random
+random.seed(7); np.random.seed(7)
+SR = 48000
+som = np.zeros(int((DUR + 1) * SR), dtype=np.float32)
+ultimo_t = -1
+for t, forca in CLIQUES:
+    if t == ultimo_t:                      # vários caracteres no mesmo quadro: espalha
+        t += random.uniform(0.008, 0.028)
+    ultimo_t = t
+    t += random.uniform(-0.006, 0.006)
+    n = int(0.045 * SR)
+    env = np.exp(-np.linspace(0, 1, n) * random.uniform(38, 55))
+    ruido = np.random.randn(n)
+    clique = np.diff(ruido, prepend=0) * 0.6 + ruido * 0.4        # agudo do "tec"
+    f = random.uniform(170, 260)                                    # corpo da tecla
+    corpo = np.sin(2 * np.pi * f * np.arange(n) / SR) * np.exp(-np.linspace(0, 1, n) * 25)
+    k = (clique * env * 0.55 + corpo * 0.45) * forca * random.uniform(0.75, 1.0)
+    a = int(max(t, 0) * SR)
+    som[a:a + n] += k[: len(som) - a]
+som = som / (np.abs(som).max() + 1e-9) * 0.9
+TECLADO = f"{TMP}/teclado.wav"
+with wave.open(TECLADO, "wb") as w:
+    w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
+    w.writeframes((som * 32767).astype(np.int16).tobytes())
+
 # ---------- 3. composição final ----------
 sw, sh = round(W * ESCALA / 2) * 2, round(H * ESCALA / 2) * 2
 fc = (
     f"[0:v]fps={FPS},scale={sw}:{sh}:flags=lanczos,crop={W}:{H}:{(sw - W) // 2}:0,setsar=1[bg];"
     f"[1:v]setpts=PTS-STARTPTS+{STRIP_IN}/TB[fx];"
     f"[bg][fx]overlay=0:{FAIXA_Y}:eof_action=pass:enable='between(t,{STRIP_IN},{STRIP_OUT - 0.001})'[v1];"
-    f"[v1][2:v]overlay=0:0:format=auto[v2];[v2]format=yuv420p[v]"
+    f"[v1][2:v]overlay=0:0:format=auto[v2];[v2]format=yuv420p[v];"
+    f"[3:a]volume=0.32,aresample=44100[tec];[0:a][tec]amix=inputs=2:duration=first:normalize=0[a]"
 )
 run(["ffmpeg", "-v", "error", "-y", "-i", FALA, "-i", FAIXA,
-     "-framerate", str(FPS), "-i", f"{TMP}/ov/%04d.png",
-     "-filter_complex", fc, "-map", "[v]", "-map", "0:a",
+     "-framerate", str(FPS), "-i", f"{TMP}/ov/%04d.png", "-i", TECLADO,
+     "-filter_complex", fc, "-map", "[v]", "-map", "[a]",
      "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-profile:v", "high",
      "-c:a", "aac", "-b:a", "192k", "-t", str(DUR), "-movflags", "+faststart", SAIDA])
 shutil.rmtree(TMP)
