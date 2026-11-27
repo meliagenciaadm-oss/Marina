@@ -135,7 +135,7 @@ BLOCOS = [
         (29.06, "big_y", "PLAY", 540, 480, True),
         (29.62, "mono", "e bom café pra vocês :)", 540, 1250, False)]),
 ]
-ESTILO = {"big_y": (F_BIG, AMARELO), "big_r": (F_BIG, VERMELHO), "mono": (F_MONO, BRANCO), "mono_y": (F_MONO, AMARELO),
+ESTILO = {"big_y": (F_BIG, AMARELO), "big_r": (F_BIG, AMARELO), "mono": (F_MONO, BRANCO), "mono_y": (F_MONO, AMARELO),
           "script": (F_SCRIPT, AMARELO)}
 CLIQUES, SFX, _vis = [], [], {}
 
