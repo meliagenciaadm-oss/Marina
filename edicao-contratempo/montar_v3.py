@@ -199,6 +199,12 @@ def mascara(img):
 def recorte_adesivo(img, borda=16):
     """Pessoa recortada com contorno branco de adesivo."""
     m = mascara(img).point(lambda v: 255 if v > 110 else 0)
+    import cv2                                     # mantém só a maior parte (tira pedacinhos soltos)
+    arr = np.asarray(m)
+    n, lab, st, _ = cv2.connectedComponentsWithStats((arr > 0).astype(np.uint8), 8)
+    if n > 1:
+        maior = 1 + int(np.argmax(st[1:, cv2.CC_STAT_AREA]))
+        m = Image.fromarray(((lab == maior) * 255).astype(np.uint8))
     big = m.filter(ImageFilter.MaxFilter(borda * 2 + 1)).filter(ImageFilter.GaussianBlur(1.5))
     out = Image.new("RGBA", img.size, (0, 0, 0, 0))
     branco = Image.new("RGBA", img.size, CREME + (255,))
@@ -394,17 +400,17 @@ ITENS = [
     (22.88, 23.90, "app da", S, 104, 540, 160, {}),
     (23.56, 23.90, "MAGALU", A, 170, 560, 300, {"rz": -3}),
     # cafeteira
-    (24.44, 25.82, "ESSA", A, 170, 790, 330, {}),
-    (24.78, 25.82, "cafeteira", S, 130, 780, 480, {}),
-    (25.34, 25.82, "igual a minha", S, 80, 780, 600, {}),
+    (24.44, 25.82, "ESSA", A, 170, 290, 300, {}),
+    (24.78, 25.82, "cafeteira", S, 130, 300, 450, {}),
+    (25.34, 25.82, "igual a minha", S, 80, 330, 1420, {}),
     # sem ela
     (26.68, 28.70, "não vivo mais", S, 104, 560, 270, {}),
     (27.48, 28.70, "SEM ELA", A, 230, 560, 450, {"ry": -20, "rx": 10}),
     # final
     (28.94, 30.40, "bora dar", S, 110, 540, 280, {}),
     (29.06, 30.40, "PLAY ▶", A, 220, 540, 450, {}),
-    (29.62, 30.40, "e bom", S, 100, 380, 1290, {}),
-    (29.84, 30.40, "CAFÉ", A, 230, 620, 1330, {"rz": -4}),
+    (29.62, 30.40, "e bom", S, 100, 330, 1330, {}),
+    (29.84, 30.40, "CAFÉ", A, 230, 700, 1370, {"rz": -4}),
 ]
 LEGENDAS = [
     (0.00, "talvez esse filme"), (1.14, "tenha passado despercebido"), (2.22, "mas ele merece"),
@@ -451,7 +457,7 @@ def desenha_itens(canvas, t, atras):
 
 def legenda(canvas, t):
     atual = [l for l in LEGENDAS if l[0] <= t + 1e-6]
-    if not atual:
+    if not atual or t >= 28.70:
         return
     txt = atual[-1][1]
     key = ("leg", txt)
@@ -514,7 +520,7 @@ for f0, f1, src in FLASHES:
 POL = [polaroid(film_still(42.6), "ele"), polaroid(film_still(39.2), "a advogada"),
        polaroid(fala_frame(375).crop((300, 380, 1080, 1160)), "a gente 👀".replace(" 👀", ""))]
 TELA_FR = []
-for a, b, n in [(0.95, 1.9, 14), (3.55, 4.1, 14), (4.05, 4.06, 10)]:
+for a, b, n in [(1.25, 2.1, 14), (3.55, 4.1, 14), (4.05, 4.06, 10)]:
     fr = ffmpeg_frames(TELA, a, 1, f"scale=480:1040", 480, 1040) if n == 10 else None
     if fr:
         TELA_FR += fr * n
@@ -629,10 +635,10 @@ def render(i, src):
             paste_center(canvas, arco, 640, 760, alpha=ease_out((t - 15.28) / 0.3))
         if 23.90 <= t < 25.82:                              # cafeteira em destaque
             if (23.90 <= t < 23.90 + 1 / FPS): SFX.append((t, "whoosh"))
-            paste_center(canvas, estrela(120, n_txt="2"), 820, 160, scale=back_out((t - 24.0) / 0.25))
+            paste_center(canvas, estrela(120, n_txt="2"), 520, 200, scale=back_out((t - 24.0) / 0.25))
             if t >= 24.78:
                 sa = seta(230)
-                paste_center(canvas, sa, 560, 760, scale=back_out((t - 24.78) / 0.25), rot=-140)
+                paste_center(canvas, sa, 330, 640, scale=back_out((t - 24.78) / 0.25), rot=-90)
         if 25.82 <= t < 28.70 and t >= 27.58:
             if (27.58 <= t < 27.58 + 1 / FPS): SFX.append((t, "pop"))
             paste_center(canvas, emoji("❤️", 130), 250, 870, scale=back_out((t - 27.58) / 0.25) * (1 + 0.06 * math.sin(t * 12)), rot=-10)
